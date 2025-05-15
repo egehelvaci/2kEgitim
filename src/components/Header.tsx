@@ -59,11 +59,21 @@ const Header = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // Sayfa değişiminde menüyü kapat
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsOpen(false);
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+    return () => window.removeEventListener('popstate', handleRouteChange);
+  }, []);
+
   return (
     <header className={`${STYLES.header.base} ${scrolled ? STYLES.header.scrolled : STYLES.header.default}`}>
       <div className={STYLES.container}>
         <Link href="/" className={STYLES.logo.wrapper}>
-          <div className="w-52 h-36 relative">
+          <div className="w-36 h-24 sm:w-44 sm:h-28 md:w-52 md:h-36 relative">
             <Image 
               src="/images/logo/2k_logo.png" 
               alt="2K Eğitim Logo" 
@@ -86,7 +96,7 @@ const Header = () => {
 
         {/* Mobile Navigation Button */}
         <button 
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none p-2"
           onClick={toggleMenu}
           aria-label={isOpen ? 'Menüyü Kapat' : 'Menüyü Aç'}
         >
@@ -141,7 +151,7 @@ const MobileNavLink = ({
 }) => (
   <Link 
     href={href} 
-    className="font-semibold text-lg py-2 block border-b border-gray-100 transition-colors duration-200"
+    className="font-semibold text-lg py-3 block border-b border-gray-100 transition-colors duration-200"
     style={{ 
       color: COLORS.menu.primary,
       textShadow: '0px 0px 1px rgba(0,0,0,0.1)'
