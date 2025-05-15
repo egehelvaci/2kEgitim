@@ -1,0 +1,179 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaQuoteLeft, FaUser, FaArrowRight } from 'react-icons/fa';
+
+// Güncellenmiş logo bilgileri - company-logos klasöründen
+const references = [
+  { name: 'Akbank', logo: '/images/referanslar/company-logos/akbank.png' },
+  { name: 'Aktif Bank', logo: '/images/referanslar/company-logos/aktifbank.png' },
+  { name: 'Aksigorta', logo: '/images/referanslar/company-logos/aksigorta.png' },
+  { name: 'Aksis', logo: '/images/referanslar/company-logos/aksis.png' },
+  { name: 'Atos', logo: '/images/referanslar/company-logos/atos.png' },
+  { name: 'Avivasa', logo: '/images/referanslar/company-logos/avivasa.png' },
+  { name: 'Çağrı Merkezleri Derneği', logo: '/images/referanslar/company-logos/Cagri-Merkezleri-Dernegi.jpg' },
+  { name: 'DenizBank', logo: '/images/referanslar/company-logos/denizbank.png' },
+  { name: 'Deniz Ev', logo: '/images/referanslar/company-logos/denizev.png' },
+  { name: 'Halk Bank', logo: '/images/referanslar/company-logos/halkbank.png' },
+  { name: 'HSBC', logo: '/images/referanslar/company-logos/HSBC-Logo.png' },
+  { name: 'ING Bank', logo: '/images/referanslar/company-logos/ing-bank-logo.png' },
+  { name: 'İş Yatırım', logo: '/images/referanslar/company-logos/Isyatirim_logo.png' },
+  { name: 'Mettler Toledo', logo: '/images/referanslar/company-logos/mettler-toledo.png' },
+  { name: 'Odeabank', logo: '/images/referanslar/company-logos/odeabank.png' },
+  { name: 'Pronet', logo: '/images/referanslar/company-logos/pronet.png' },
+  { name: 'QNB', logo: '/images/referanslar/company-logos/QNB-Logo.png' },
+  { name: 'QNB Finansfaktoring', logo: '/images/referanslar/company-logos/qnb_finansfaktoring_logo.png' },
+  { name: 'Ray Sigorta', logo: '/images/referanslar/company-logos/ray-sigorta.png' },
+  { name: 'TEB', logo: '/images/referanslar/company-logos/teb.png' },
+  { name: 'Turkcell', logo: '/images/referanslar/company-logos/turkcell.png' },
+  { name: 'Türk Telekom', logo: '/images/referanslar/company-logos/türktelekom.png' },
+  { name: 'Türkiye İş Bankası', logo: '/images/referanslar/company-logos/işbankası.png' },
+  { name: 'Vakıfbank', logo: '/images/referanslar/company-logos/vakıfbank.png' },
+  { name: 'Ziraat Bankası', logo: '/images/referanslar/company-logos/ziraatbankasi.png' },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    content: "2K Eğitim ile çalışmak ekibimiz için büyük bir dönüm noktası oldu. Satış ekibimizin performansında gözle görülür bir artış yaşadık. Eğitimlerin pratik vaka çalışmalarıyla desteklenmesi büyük katkı sağladı.",
+    author: "Ayşe Kara",
+    position: "İnsan Kaynakları Direktörü",
+    company: "Turkcell"
+  },
+  {
+    id: 2,
+    content: "Bankacılık sektörünün dinamik yapısına uygun olarak tasarlanmış eğitim programı tam ihtiyacımız olan konuları kapsıyordu. Eğitmenin finans sektörü deneyimi ve interaktif eğitim yaklaşımı çok etkileyiciydi.",
+    author: "Mehmet Yılmaz",
+    position: "Eğitim ve Gelişim Müdürü",
+    company: "Akbank"
+  },
+  {
+    id: 3,
+    content: "Sigorta satış ekibimiz için hazırlanan özel program beklentilerimizin üzerinde sonuçlar verdi. Çalışanlarımızın müşteri ilişkileri ve ikna becerileri önemli ölçüde arttı. 2K Eğitim ekibinin profesyonel yaklaşımı için teşekkür ederiz.",
+    author: "Kemal Demir",
+    position: "Satış Direktörü",
+    company: "Aksigorta"
+  },
+];
+
+const References = () => {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    <section id="references" className="section bg-white">
+      <div className="container-custom">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold"
+          >
+            <span className="text-primary">Referanslarımız</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-600 mt-4 max-w-2xl mx-auto"
+          >
+            Türkiye'nin önde gelen kurumları ile çalışmaktan gurur duyuyoruz.
+          </motion.p>
+        </div>
+
+        {/* Company Logos */}
+        <div className="mb-20">
+          {mounted && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 items-center">
+              {references.slice(0, 16).map((ref, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow h-16 relative"
+                >
+                  <img 
+                    src={ref.logo} 
+                    alt={ref.name}
+                    className="max-h-12 max-w-full object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mt-8 text-center">
+            <Link 
+              href="/referanslarimiz"
+              className="inline-flex items-center text-accent hover:text-accent-dark font-medium transition-colors"
+            >
+              Tüm Referanslarımızı Görüntüle
+              <FaArrowRight className="ml-2" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Testimonials */}
+        <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
+          <div className="flex justify-center mb-10">
+            <FaQuoteLeft className="text-primary opacity-20 w-16 h-16" />
+          </div>
+          
+          <div className="relative">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: activeTestimonial === index ? 1 : 0,
+                  x: activeTestimonial === index ? 0 : 20 
+                }}
+                transition={{ duration: 0.6 }}
+                className="text-center"
+                style={{ display: activeTestimonial === index ? 'block' : 'none' }}
+              >
+                <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+                  "{testimonial.content}"
+                </p>
+                
+                <div className="flex flex-col items-center">
+                  <div className="bg-primary text-white p-4 rounded-full mb-4">
+                    <FaUser className="w-6 h-6" />
+                  </div>
+                  <h4 className="font-bold text-lg">{testimonial.author}</h4>
+                  <p className="text-gray-600">{testimonial.position}</p>
+                  <p className="text-primary">{testimonial.company}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Testimonial Navigation */}
+          <div className="flex justify-center mt-10">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTestimonial(index)}
+                className={`w-3 h-3 rounded-full mx-2 transition-all duration-300 ${
+                  activeTestimonial === index 
+                    ? 'bg-primary w-8' 
+                    : 'bg-gray-300'
+                }`}
+                aria-label={`Testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default References; 
