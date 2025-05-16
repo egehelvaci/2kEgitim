@@ -110,7 +110,7 @@ export default function HakkimizdaPage() {
                 2K Eğitim ve Danışmanlık, satış, müşteri deneyimi, yönetici gelişimi ve dijital eğitim alanlarında uzmanlaşmış bir eğitim ve gelişim şirketidir.
               </p>
               <p className="text-gray-700 mb-4">
-                2K Eğitim ve Danışmanlık, kurucusu Koray Karataş'ın 29 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
+                2K Eğitim ve Danışmanlık, kurucusu Koray Karataş&apos;ın 29 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
               </p>
               <p className="text-gray-700">
                 Bankacılık, bireysel emeklilik, hayat ve elementer sigortacılık, tarım, ithalat-ihracat ve finans piyasaları gibi farklı sektörlerde edindiğimiz saha deneyimi, sunduğumuz çözümlerin çok yönlü ve sahaya uyumlu olmasını sağlıyor.
@@ -286,7 +286,7 @@ export default function HakkimizdaPage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Sizden biriymişçesine çalışıyor, kurumunuzun vizyonuna katkı sağlıyoruz...</h2>
+            <h2 className="text-3xl font-bold mb-6">Sizden birimiymiş&ccedil;esine çalışıyor, kurumunuzun vizyonuna katkı sağlıyoruz...</h2>
             <p className="text-gray-600 mb-8">
               Kurumunuzun gelişimine nasıl katkıda bulunabileceğimizi keşfetmek için bizimle iletişime geçin.
             </p>

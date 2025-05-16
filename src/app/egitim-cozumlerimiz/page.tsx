@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { FaUsers, FaUserTie, FaChalkboardTeacher, FaLaptop, FaHardHat, FaBuilding, FaArrowRight, FaGraduationCap, FaPhoneAlt, FaHandshake, FaLaptopCode, FaSearch, FaFilter } from 'react-icons/fa';
+import { FaUserTie, FaHardHat, FaBuilding, FaArrowRight, FaGraduationCap, FaPhoneAlt, FaHandshake, FaLaptopCode, FaSearch, FaFilter } from 'react-icons/fa';
 import Link from 'next/link';
 import TrainingCategory from '@/components/TrainingCategory';
 
@@ -400,7 +400,7 @@ export default function EgitimCozumlerimizPage() {
                 <FaSearch className="mx-auto text-4xl text-gray-300 mb-4" />
                 <h3 className="text-xl font-bold text-gray-700 mb-2">Sonuç Bulunamadı</h3>
                 <p className="text-gray-600">
-                  "{searchQuery}" araması için eğitim programı bulunamadı. Lütfen farklı anahtar kelimelerle tekrar deneyin.
+                  &quot;{searchQuery}&quot; araması için eğitim programı bulunamadı. Lütfen farklı anahtar kelimelerle tekrar deneyin.
                 </p>
                 <button 
                   onClick={() => setSearchQuery('')}

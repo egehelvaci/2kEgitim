@@ -64,7 +64,7 @@ export default function ReferanslarimizPage() {
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Referanslarımız</h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-              Türkiye'nin önde gelen kuruluşları 2K Eğitim'in kaliteli eğitim ve danışmanlık 
+              Türkiye&apos;nin önde gelen kuruluşları 2K Eğitim&apos;in kaliteli eğitim ve danışmanlık 
               hizmetlerini tercih ediyor. İşte bazı değerli iş ortaklarımız.
             </p>
           </motion.div>
@@ -99,9 +99,11 @@ export default function ReferanslarimizPage() {
                   key={idx}
                   className="w-full h-36 relative flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <img
+                  <Image
                     src={ref.logo}
                     alt={ref.name}
+                    width={100}
+                    height={60}
                     className="max-w-full max-h-24 object-contain"
                   />
                 </div>

@@ -15,7 +15,6 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -231,9 +230,7 @@ const Contact = () => {
                     />
                   </div>
                   
-                  {submitError && (
-                    <div className="text-red-500 text-sm">{submitError}</div>
-                  )}
+                  
                   
                   <button
                     type="submit"

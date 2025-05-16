@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaQuoteLeft, FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
@@ -73,7 +73,7 @@ export default function ReferanslarPage() {
               Güvenilir İş Ortaklarımız
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mb-10">
-              Türkiye'nin önde gelen kurumlarıyla çalışıyor, başarı hikayelerini birlikte yazıyoruz.
+              Türkiye&apos;nin önde gelen kurumlarıyla çalışıyor, başarı hikayelerini birlikte yazıyoruz.
             </p>
             <div className="flex gap-4">
               <Link 
@@ -93,7 +93,7 @@ export default function ReferanslarPage() {
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Güven Duyulan İş Ortağınız</h2>
-            <p className="text-gray-600 mb-6">Türkiye'nin önde gelen kurumları ile çalışıyoruz</p>
+            <p className="text-gray-600 mb-6">Türkiye&apos;nin önde gelen kurumları ile çalışıyoruz</p>
             <div className="w-20 h-1 bg-accent mx-auto"></div>
           </div>
           
@@ -104,9 +104,11 @@ export default function ReferanslarPage() {
                   key={idx}
                   className="flex items-center justify-center bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all h-36"
                 >
-                  <img
+                  <Image
                     src={logo.src}
                     alt={`${logo.name} logo`}
+                    width={100}
+                    height={60}
                     className="max-w-full max-h-24 object-contain"
                   />
                 </div>

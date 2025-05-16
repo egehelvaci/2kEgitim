@@ -16,7 +16,6 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState('');
   const [formFocus, setFormFocus] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -316,9 +315,7 @@ export default function ContactPage() {
                       />
                     </motion.div>
                     
-                    {submitError && (
-                      <div className="text-red-500 text-sm">{submitError}</div>
-                    )}
+
                     
                     <motion.button
                       type="submit"

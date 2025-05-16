@@ -19,13 +19,13 @@ const KullanimKosullari = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">1. Kabul Edilen Koşullar</h2>
           <p>
-            2K Eğitim web sitesini ("web sitesi") ziyaret ettiğinizde veya kullandığınızda, bu Kullanım Koşulları'nı ("Koşullar") kabul etmiş sayılırsınız. 
-            Bu Koşullar'a uymayı kabul etmiyorsanız, lütfen web sitemizi kullanmayınız. Bu Koşullar herhangi bir zamanda güncellenebilir ve güncellenmiş Koşullar, web sitesinde yayınlandığı anda yürürlüğe girer.
+            2K Eğitim web sitesini (&quot;web sitesi&quot;) ziyaret ettiğinizde veya kullandığınızda, bu Kullanım Koşulları&apos;nı (&quot;Koşullar&quot;) kabul etmiş sayılırsınız. 
+            Bu Koşullar&apos;a uymayı kabul etmiyorsanız, lütfen web sitemizi kullanmayınız. Bu Koşullar herhangi bir zamanda güncellenebilir ve güncellenmiş Koşullar, web sitesinde yayınlandığı anda yürürlüğe girer.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">2. Fikri Mülkiyet Hakları</h2>
           <p>
-            Web sitesindeki tüm içerik (metin, grafikler, logolar, düğme simgeleri, görseller, ses klipleri, dijital indirmeler, veri derlemeleri ve yazılım dahil) 2K Eğitim'in mülkiyetindedir veya 2K Eğitim'in lisans sahipleri tarafından sağlanmaktadır ve Türkiye Cumhuriyeti'nin ve diğer ülkelerin telif hakkı yasaları tarafından korunmaktadır.
+            Web sitesindeki tüm içerik (metin, grafikler, logolar, düğme simgeleri, görseller, ses klipleri, dijital indirmeler, veri derlemeleri ve yazılım dahil) 2K Eğitim&apos;in mülkiyetindedir veya 2K Eğitim&apos;in lisans sahipleri tarafından sağlanmaktadır ve Türkiye Cumhuriyeti&apos;nin ve diğer ülkelerin telif hakkı yasaları tarafından korunmaktadır.
           </p>
           <p className="mt-3">
             Web sitesindeki içeriğin herhangi bir kısmını, önceden yazılı izin almadan kopyalayamaz, çoğaltamaz, yeniden yayımlayamaz, yükleyemez, gönderemez, halka açık şekilde sergileyemez, kodunu çözemez veya dağıtamazsınız.
@@ -48,7 +48,7 @@ const KullanimKosullari = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">4. Kullanıcı İçeriği</h2>
           <p>
-            Web sitesine içerik, yorum veya geri bildirim ("Kullanıcı İçeriği") gönderdiğinizde, bize Kullanıcı İçeriğinizi herhangi bir amaçla, herhangi bir ortamda ve dünya çapında kullanma, kopyalama, dağıtma, sergileme ve türev eserler oluşturma hakkı vermiş olursunuz.
+            Web sitesine içerik, yorum veya geri bildirim (&quot;Kullanıcı İçeriği&quot;) gönderdiğinizde, bize Kullanıcı İçeriğinizi herhangi bir amaçla, herhangi bir ortamda ve dünya çapında kullanma, kopyalama, dağıtma, sergileme ve türev eserler oluşturma hakkı vermiş olursunuz.
           </p>
           <p className="mt-3">
             Kullandığınız veya gönderdiğiniz Kullanıcı İçeriğinin yasalara uygun olduğunu ve üçüncü tarafların haklarını ihlal etmediğini garanti edersiniz.
@@ -56,7 +56,7 @@ const KullanimKosullari = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">5. Sorumluluk Reddi</h2>
           <p>
-            Web sitesi "olduğu gibi" ve "mevcut olduğu şekliyle" sunulmaktadır. 2K Eğitim, web sitesinin kesintisiz, hatasız veya güvenli olacağını garanti etmez. Web sitesinin kullanımıyla ilgili tüm risk size aittir.
+            Web sitesi &quot;olduğu gibi&quot; ve &quot;mevcut olduğu şekliyle&quot; sunulmaktadır. 2K Eğitim, web sitesinin kesintisiz, hatasız veya güvenli olacağını garanti etmez. Web sitesinin kullanımıyla ilgili tüm risk size aittir.
           </p>
           <p className="mt-3">
             Yasaların izin verdiği azami ölçüde, 2K Eğitim, açık veya zımni, herhangi bir türde garanti vermez ve tüm garantileri reddeder. Bu, ticari elverişlilik, belirli bir amaca uygunluk ve ihlal etmeme garantilerini içerir ancak bunlarla sınırlı değildir.

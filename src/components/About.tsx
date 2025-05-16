@@ -71,7 +71,7 @@ const About = () => {
             </p>
             
             <p className="text-gray-600 mb-4 sm:mb-6">
-              2K Eğitim ve Danışmanlık, kurucusu Koray Karataş'ın 29 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
+              2K Eğitim ve Danışmanlık, kurucusu Koray Karataş&apos;ın 29 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
             </p>
             
             <p className="text-gray-600 mb-6 sm:mb-8">

@@ -87,7 +87,7 @@ const References = () => {
             viewport={{ once: true }}
             className="text-gray-600 mt-4 max-w-2xl mx-auto"
           >
-            Türkiye'nin önde gelen kurumları ile çalışmaktan gurur duyuyoruz.
+            Türkiye&apos;nin önde gelen kurumları ile çalışmaktan gurur duyuyoruz.
           </motion.p>
         </div>
 
@@ -100,9 +100,11 @@ const References = () => {
                   key={index}
                   className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow h-16 relative"
                 >
-                  <img 
+                  <Image 
                     src={ref.logo} 
                     alt={ref.name}
+                    width={80}
+                    height={40}
                     className="max-h-12 max-w-full object-contain"
                   />
                 </div>
@@ -140,7 +142,7 @@ const References = () => {
                 style={{ display: activeTestimonial === index ? 'block' : 'none' }}
               >
                 <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </p>
                 
                 <div className="flex flex-col items-center">
