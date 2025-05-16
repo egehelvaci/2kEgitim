@@ -42,7 +42,7 @@ const services = [
     title: 'Kişisel Gelişim',
     description: 'Bireylerin profesyonel ve kişisel becerilerini geliştirmeye yönelik eğitim programları.',
     icon: <FaChartLine className="w-6 h-6 sm:w-8 sm:h-8" />,
-    color: 'bg-red-50 text-red-600',
+    color: 'bg-orange-50 text-orange-600',
     details: 'Kişisel gelişim programlarımız ile çalışanların potansiyellerini keşfetmelerine ve kendilerini geliştirmelerine yardımcı oluyoruz. Zaman yönetimi, stres yönetimi ve iletişim becerileri gibi konuları kapsıyoruz.'
   },
   {

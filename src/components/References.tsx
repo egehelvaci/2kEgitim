@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaQuoteLeft, FaUser, FaArrowRight } from 'react-icons/fa';
@@ -62,15 +62,65 @@ const testimonials = [
 const References = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Otomatik kayma animasyonu
+  useEffect(() => {
+    if (!sliderRef.current || !mounted) return;
+    
+    const slider = sliderRef.current;
+    let scrollAmount = 0;
+    const step = 1; // Yavaş kayma hızı
+    const scrollSpeed = 30; // Kayma hızı (ms)
+    
+    const autoScroll = setInterval(() => {
+      scrollAmount += step;
+      
+      if ((slider.scrollWidth - slider.clientWidth) <= slider.scrollLeft) {
+        // En sona geldiğinde başa dön
+        slider.scrollLeft = 0;
+        scrollAmount = 0;
+      } else {
+        slider.scrollLeft = scrollAmount;
+      }
+    }, scrollSpeed);
+    
+    return () => clearInterval(autoScroll);
+  }, [mounted]);
+
+  // Mouse ile sürükleme işlemleri
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    
+    setIsDragging(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Sürükleme hızını artırmak için çarpan
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <section id="references" className="section bg-white">
+    <section id="references" className="section bg-white py-16">
       <div className="container-custom">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,30 +141,64 @@ const References = () => {
           </motion.p>
         </div>
 
-        {/* Company Logos */}
-        <div className="mb-20">
-          {mounted && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 items-center">
-              {references.slice(0, 16).map((ref, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-center bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow h-16 relative"
-                >
+        {/* Film Şeridi Şeklinde Kayan Referanslar */}
+        <div className="mb-16 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
+          
+          <div 
+            ref={sliderRef}
+            className="flex overflow-x-hidden whitespace-nowrap py-6"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            style={{
+              scrollbarWidth: 'none', // Firefox için scrollbar gizleme
+              msOverflowStyle: 'none', // IE için scrollbar gizleme
+            }}
+          >
+            {/* İlk set referanslar */}
+            {references.map((ref, index) => (
+              <div
+                key={`first-${index}`}
+                className="inline-block mx-4 p-4 bg-white shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-24 min-w-40"
+              >
+                <div className="flex items-center justify-center h-full">
                   <Image 
                     src={ref.logo} 
                     alt={ref.name}
                     width={80}
                     height={40}
-                    className="max-h-12 max-w-full object-contain"
+                    className="max-h-16 max-w-full object-contain"
                   />
                 </div>
-              ))}
-            </div>
-          )}
-          <div className="mt-8 text-center">
+              </div>
+            ))}
+            
+            {/* Sonsuz döngü için tekrar eden referanslar */}
+            {references.map((ref, index) => (
+              <div
+                key={`second-${index}`}
+                className="inline-block mx-4 p-4 bg-white shadow-sm hover:shadow-md transition-all duration-300 rounded-lg h-24 min-w-40"
+              >
+                <div className="flex items-center justify-center h-full">
+                  <Image 
+                    src={ref.logo} 
+                    alt={ref.name}
+                    width={80}
+                    height={40}
+                    className="max-h-16 max-w-full object-contain"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-6 text-center">
             <Link 
               href="/referanslarimiz"
-              className="inline-flex items-center text-accent hover:text-accent-dark font-medium transition-colors"
+              className="inline-flex items-center text-primary hover:text-primary-dark font-medium transition-colors"
             >
               Tüm Referanslarımızı Görüntüle
               <FaArrowRight className="ml-2" />

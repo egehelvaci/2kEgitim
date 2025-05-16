@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane, FaBuilding, FaCheckCircle } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane, FaBuilding, FaCheckCircle, FaRobot } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 export default function ContactPage() {
@@ -12,15 +12,30 @@ export default function ContactPage() {
     phone: '',
     company: '',
     message: '',
+    kvkkApproval: false,
+    notRobot: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formFocus, setFormFocus] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<{
+    kvkkApproval?: string;
+    notRobot?: string;
+  }>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target as HTMLInputElement;
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    setFormData((prev) => ({ ...prev, [name]: newValue }));
+    
+    // Hata mesajını temizle
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
 
   const handleFocus = (fieldName: string) => {
@@ -33,6 +48,27 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Formda hata kontrolü
+    const errors: {
+      kvkkApproval?: string;
+      notRobot?: string;
+    } = {};
+    
+    if (!formData.kvkkApproval) {
+      errors.kvkkApproval = "KVKK aydınlatma metnini onaylamanız gerekmektedir.";
+    }
+    
+    if (!formData.notRobot) {
+      errors.notRobot = "Robot olmadığınızı doğrulamanız gerekmektedir.";
+    }
+    
+    // Eğer hata varsa formu gönderme
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Burada gerçek bir API çağrısı yapılacaktır.
@@ -46,6 +82,8 @@ export default function ContactPage() {
         phone: '',
         company: '',
         message: '',
+        kvkkApproval: false,
+        notRobot: false,
       });
     }, 1500);
   };
@@ -102,7 +140,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="bg-gradient-to-b from-white to-amber-50/50 py-16 px-4">
+    <main className="bg-gradient-to-b from-white to-amber-50/50 py-16 px-4 pt-36 md:pt-40">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -315,7 +353,59 @@ export default function ContactPage() {
                       />
                     </motion.div>
                     
-
+                    {/* KVKK Onay Kutusu */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.55 }}
+                      className="flex items-start"
+                    >
+                      <div className="flex items-center h-5 mt-1">
+                        <input
+                          id="kvkkApproval"
+                          name="kvkkApproval"
+                          type="checkbox"
+                          checked={formData.kvkkApproval}
+                          onChange={handleChange}
+                          className="w-5 h-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"
+                        />
+                      </div>
+                      <div className="ml-3">
+                        <label htmlFor="kvkkApproval" className="text-sm text-gray-600">
+                          <a href="/kvkk" className="text-amber-600 hover:underline" target="_blank" rel="noopener noreferrer">KVKK Aydınlatma Metni</a>&apos;ni okudum ve kişisel verilerimin işlenmesine onay veriyorum.
+                        </label>
+                        {formErrors.kvkkApproval && (
+                          <p className="mt-1 text-sm text-red-600">{formErrors.kvkkApproval}</p>
+                        )}
+                      </div>
+                    </motion.div>
+                    
+                    {/* Robot Değilim Doğrulaması */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="flex items-start"
+                    >
+                      <div className="flex items-center h-5 mt-1">
+                        <input
+                          id="notRobot"
+                          name="notRobot"
+                          type="checkbox"
+                          checked={formData.notRobot}
+                          onChange={handleChange}
+                          className="w-5 h-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"
+                        />
+                      </div>
+                      <div className="ml-3 flex items-center">
+                        <label htmlFor="notRobot" className="text-sm text-gray-600 flex items-center">
+                          <FaRobot className="text-gray-400 mr-2" /> Robot olmadığımı doğruluyorum
+                        </label>
+                        {formErrors.notRobot && (
+                          <p className="mt-1 text-sm text-red-600 ml-2">{formErrors.notRobot}</p>
+                        )}
+                      </div>
+                    </motion.div>
                     
                     <motion.button
                       type="submit"
@@ -325,7 +415,7 @@ export default function ContactPage() {
                       whileTap={{ scale: 0.98 }}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
+                      transition={{ delay: 0.65 }}
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">

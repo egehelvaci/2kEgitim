@@ -9,11 +9,15 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: 'rgb(0, 84, 159)',
-          light: 'rgb(30, 111, 191)',
+          DEFAULT: 'rgb(249, 115, 22)',
+          light: 'rgb(251, 146, 60)',
+          dark: 'rgb(234, 88, 12)',
         },
-        secondary: 'rgb(30, 111, 191)',
+        secondary: 'rgb(194, 65, 12)',
         accent: 'rgb(245, 158, 11)',
+        cream: {
+          50: 'rgb(255, 251, 235)',
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],

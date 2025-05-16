@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane, FaRobot } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,18 +11,54 @@ const Contact = () => {
     phone: '',
     company: '',
     message: '',
+    kvkkApproval: false,
+    notRobot: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [formErrors, setFormErrors] = useState<{
+    kvkkApproval?: string;
+    notRobot?: string;
+  }>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target as HTMLInputElement;
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    setFormData((prev) => ({ ...prev, [name]: newValue }));
+    
+    // Hata mesajını temizle
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Formda hata kontrolü
+    const errors: {
+      kvkkApproval?: string;
+      notRobot?: string;
+    } = {};
+    
+    if (!formData.kvkkApproval) {
+      errors.kvkkApproval = "KVKK aydınlatma metnini onaylamanız gerekmektedir.";
+    }
+    
+    if (!formData.notRobot) {
+      errors.notRobot = "Robot olmadığınızı doğrulamanız gerekmektedir.";
+    }
+    
+    // Eğer hata varsa formu gönderme
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Burada gerçek bir API çağrısı yapılacaktır.
@@ -36,12 +72,14 @@ const Contact = () => {
         phone: '',
         company: '',
         message: '',
+        kvkkApproval: false,
+        notRobot: false,
       });
     }, 1500);
   };
 
   return (
-    <section id="contact" className="section bg-gradient-to-b from-gray-50 to-white">
+    <section id="contact" className="section bg-gradient-to-b from-gray-50 to-white pt-36 md:pt-40">
       <div className="container-custom">
         <div className="text-center mb-16">
           <motion.h2 
@@ -230,7 +268,51 @@ const Contact = () => {
                     />
                   </div>
                   
-                  
+                  <div className="space-y-4">
+                    {/* KVKK Onay Kutusu */}
+                    <div className="flex items-start mt-4">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="kvkkApproval"
+                          name="kvkkApproval"
+                          type="checkbox"
+                          checked={formData.kvkkApproval}
+                          onChange={handleChange}
+                          className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                      </div>
+                      <div className="ml-3">
+                        <label htmlFor="kvkkApproval" className="text-sm text-gray-600">
+                          <a href="/kvkk" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">KVKK Aydınlatma Metni</a>&apos;ni okudum ve kişisel verilerimin işlenmesine onay veriyorum.
+                        </label>
+                        {formErrors.kvkkApproval && (
+                          <p className="mt-1 text-sm text-red-600">{formErrors.kvkkApproval}</p>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* Robot Değilim Doğrulaması */}
+                    <div className="flex items-start mt-4">
+                      <div className="flex items-center h-5">
+                        <input
+                          id="notRobot"
+                          name="notRobot"
+                          type="checkbox"
+                          checked={formData.notRobot}
+                          onChange={handleChange}
+                          className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary"
+                        />
+                      </div>
+                      <div className="ml-3 flex items-center">
+                        <label htmlFor="notRobot" className="text-sm text-gray-600 flex items-center">
+                          <FaRobot className="text-gray-400 mr-2" /> Robot olmadığımı doğruluyorum
+                        </label>
+                        {formErrors.notRobot && (
+                          <p className="mt-1 text-sm text-red-600 ml-2">{formErrors.notRobot}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                   
                   <button
                     type="submit"

@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="tr" className={inter.variable}>
       <body className={inter.className}>
         <Header />
-        <div className="content-wrapper pt-48 md:pt-48 sm:pt-40">
+        <div className="content-wrapper">
           {children}
         </div>
         <Footer />
