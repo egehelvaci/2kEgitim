@@ -54,39 +54,6 @@ const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60 sm:bg-gradient-to-r sm:from-black/40 sm:to-black/30"></div>
         </div>
         
-        {/* Scroll Down Arrow - Sadece masaüstü görünümünde ve turuncu efektli */}
-        <motion.div 
-          className="hidden sm:flex absolute sm:left-10 sm:top-1/2 transform sm:-translate-y-1/2 z-10 cursor-pointer"
-          onClick={scrollToContent}
-          animate={{ 
-            y: [0, 10, 0],
-            opacity: scrollPosition > 100 ? 0 : 1
-          }}
-          transition={{ 
-            y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" },
-            opacity: { duration: 0.3 }
-          }}
-          whileHover={{ scale: 1.1 }}
-        >
-          <div className="flex flex-col items-center">
-            <span className="font-medium mb-2 text-sm drop-shadow-md" style={{color: "#f5b421"}}>Aşağı Kaydırın</span>
-            <div className="p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300" 
-              style={{
-                background: `linear-gradient(to right, #f5b421, #f5b421)`,
-                boxShadow: `0 10px 15px -3px rgba(245, 180, 33, 0.3), 0 4px 6px -4px rgba(245, 180, 33, 0.3)`
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = `0 10px 15px -3px rgba(245, 180, 33, 0.5), 0 4px 6px -4px rgba(245, 180, 33, 0.5)`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = `0 10px 15px -3px rgba(245, 180, 33, 0.3), 0 4px 6px -4px rgba(245, 180, 33, 0.3)`;
-              }}
-            >
-              <FaChevronDown className="w-5 h-5 text-white" />
-            </div>
-          </div>
-        </motion.div>
-        
         {/* Ana İçerik */}
         <div className="container relative z-10 px-4 md:px-0 text-center mx-auto pt-20 md:pt-28 lg:pt-36 flex flex-col justify-center flex-grow">
           <motion.div
@@ -164,6 +131,39 @@ const Hero = () => {
               <p className="text-xs sm:text-sm md:text-base text-gray-700">Sahada hemen kullanabileceğiniz gerçek çözümler sunarız.</p>
             </div>
           </div>
+          
+          {/* Scroll Down Arrow - Ortada ve en altta */}
+          <motion.div 
+            className="flex justify-center mt-8 sm:mt-10 md:mt-12"
+            onClick={scrollToContent}
+            animate={{ 
+              y: [0, 10, 0],
+              opacity: scrollPosition > 100 ? 0 : 1
+            }}
+            transition={{ 
+              y: { repeat: Infinity, duration: 1.5, ease: "easeInOut" },
+              opacity: { duration: 0.3 }
+            }}
+            whileHover={{ scale: 1.1 }}
+          >
+            <div className="flex flex-col items-center cursor-pointer">
+              <span className="font-medium mb-2 text-sm drop-shadow-md text-white">Aşağı Kaydırın</span>
+              <div className="p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300" 
+                style={{
+                  background: `linear-gradient(to right, #f5b421, #f5b421)`,
+                  boxShadow: `0 10px 15px -3px rgba(245, 180, 33, 0.3), 0 4px 6px -4px rgba(245, 180, 33, 0.3)`
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = `0 10px 15px -3px rgba(245, 180, 33, 0.5), 0 4px 6px -4px rgba(245, 180, 33, 0.5)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = `0 10px 15px -3px rgba(245, 180, 33, 0.3), 0 4px 6px -4px rgba(245, 180, 33, 0.3)`;
+                }}
+              >
+                <FaChevronDown className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </section>
 
