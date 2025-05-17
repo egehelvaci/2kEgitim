@@ -2,56 +2,90 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaChalkboardTeacher, FaLaptop, FaUserTie, FaUsers, FaChartLine, FaHandshake } from 'react-icons/fa';
+import { 
+  FaUniversity, 
+  FaChartLine, 
+  FaHandshake, 
+  FaHeadset, 
+  FaUserTie, 
+  FaChalkboardTeacher, 
+  FaPodcast, 
+  FaVideo, 
+  FaHardHat 
+} from 'react-icons/fa';
 
 const services = [
   {
     id: 1,
-    title: 'Kurumsal Eğitimler',
-    description: 'Kurum ihtiyacına özel tasarlanmış, sektör deneyimi ile zenginleştirilmiş eğitim programları.',
-    icon: <FaChalkboardTeacher className="w-6 h-6 sm:w-8 sm:h-8" />,
+    title: 'Bankacılık Eğitimleri',
+    description: 'Şube ve çağrı merkezi ekiplerine özel, segment bazlı saha uygulamaları',
+    icon: <FaUniversity className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: 'bg-blue-50 text-blue-600',
-    details: 'Kurumsal eğitimlerimiz, şirketinizin ihtiyaçlarına göre tasarlanır. Her kurum için özel içerik ve metodoloji ile çalışanlarınızın potansiyelini en üst düzeye çıkarıyoruz.'
+    details: 'Bankacılık sektöründe ihtiyaç duyulan tüm teorik ve pratik bilgileri, güncel düzenlemeler ve piyasa deneyimleriyle harmanlayan eğitim programlarımız.'
   },
   {
     id: 2,
-    title: 'Dijital Eğitimler',
-    description: 'Zaman ve mekandan bağımsız, modern öğrenme teknolojileri ile desteklenmiş online eğitim çözümleri.',
-    icon: <FaLaptop className="w-6 h-6 sm:w-8 sm:h-8" />,
+    title: 'KOBİ\'ler için Kredi Skor Yönetimi',
+    description: 'KOBİ\'lere finansal okuryazarlık ve Findeks odaklı uygulamalı içerikler',
+    icon: <FaChartLine className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: 'bg-purple-50 text-purple-600',
-    details: 'Dijital eğitimlerimiz ile zaman ve mekan kısıtlaması olmadan, interaktif içeriklerle öğrenme deneyimi sunuyoruz. Video, sınav ve canlı eğitim seçenekleri mevcuttur.'
+    details: 'KOBİ\'lere özel finansal okuryazarlık, Findeks skor yönetimi ve kredi başvuru süreçleri hakkında detaylı, uygulamalı eğitim programları.'
   },
   {
     id: 3,
-    title: 'Yönetici Gelişim Programları',
-    description: 'Liderlik becerilerini ve yönetim kabiliyetlerini geliştirmeye yönelik kapsamlı eğitim programları.',
-    icon: <FaUserTie className="w-6 h-6 sm:w-8 sm:h-8" />,
+    title: 'Satış Eğitimleri',
+    description: 'İtiraz karşılama, ikna, fayda sunumu, davranış odaklı teknikler',
+    icon: <FaHandshake className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: 'bg-amber-50 text-amber-600',
-    details: 'Yöneticilerinizin liderlik becerilerini geliştiren programlarımız stratejik düşünme, takım yönetimi, iletişim ve karar verme konularında gelişim sağlar.'
+    details: 'Satış profesyonellerine özel itiraz karşılama teknikleri, ikna yöntemleri ve fayda sunumu konularında davranış odaklı uygulamalı eğitimler.'
   },
   {
     id: 4,
-    title: 'Takım Çalışması',
-    description: 'Ekip dinamiklerini güçlendiren, iş birliğini ve iletişimi geliştiren interaktif çalışmalar.',
-    icon: <FaUsers className="w-6 h-6 sm:w-8 sm:h-8" />,
+    title: 'Müşteri Deneyimi Eğitimleri',
+    description: 'Temsil dili, empati, ilk temas, şikâyet karşılamada duygusal zeka',
+    icon: <FaHeadset className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: 'bg-green-50 text-green-600',
-    details: 'Takım çalışmalarımız ile ekibinizin uyum ve verimliliğini artırıyoruz. Ekip içi iletişim, problem çözme ve güven geliştirme üzerine etkinlikler düzenliyoruz.'
+    details: 'Müşteri iletişiminde temsil dili, empati kurma, ilk temas anı ve şikâyet yönetiminde duygusal zeka kullanımı odaklı eğitimler.'
   },
   {
     id: 5,
-    title: 'Kişisel Gelişim',
-    description: 'Bireylerin profesyonel ve kişisel becerilerini geliştirmeye yönelik eğitim programları.',
-    icon: <FaChartLine className="w-6 h-6 sm:w-8 sm:h-8" />,
+    title: 'Yönetici Gelişimi ve Koçluk',
+    description: 'Koçvari liderlik, geri bildirim, rol farkındalığı ile davranışsal gelişim',
+    icon: <FaUserTie className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: 'bg-orange-50 text-orange-600',
-    details: 'Kişisel gelişim programlarımız ile çalışanların potansiyellerini keşfetmelerine ve kendilerini geliştirmelerine yardımcı oluyoruz. Zaman yönetimi, stres yönetimi ve iletişim becerileri gibi konuları kapsıyoruz.'
+    details: 'Yöneticilere özel koçvari liderlik, etkili geri bildirim teknikleri ve rol farkındalığı ile davranışsal gelişim sağlayan yönetici gelişim programları.'
   },
   {
     id: 6,
-    title: 'Danışmanlık Hizmetleri',
-    description: 'Kurumsal süreçleri iyileştirmek ve performansı artırmak için profesyonel danışmanlık hizmetleri.',
-    icon: <FaHandshake className="w-6 h-6 sm:w-8 sm:h-8" />,
+    title: 'Eğiticinin Eğitimi',
+    description: 'Kurum içi eğitmen havuzu oluşturma, aktarıcı dil, prova ve geri bildirim',
+    icon: <FaChalkboardTeacher className="w-6 h-6 sm:w-8 sm:h-8" />,
     color: 'bg-teal-50 text-teal-600',
-    details: 'Danışmanlık hizmetlerimiz ile kurumsal süreçlerinizi analiz ediyor, iyileştirme önerileri sunuyor ve uygulamada destek oluyoruz. Deneyimli danışmanlarımız ile kurumsal gelişiminize katkı sağlıyoruz.'
+    details: 'Kurum içi eğitmen havuzu oluşturma, etkili aktarım teknikleri, sunum provası ve geri bildirim mekanizmaları içeren kapsamlı eğitici yetiştirme programları.'
+  },
+  {
+    id: 7,
+    title: 'Sunum ve Sahne Becerileri',
+    description: 'Etkili anlatım, sahnede duruş, ikna gücü ve temsil etkisi',
+    icon: <FaPodcast className="w-6 h-6 sm:w-8 sm:h-8" />,
+    color: 'bg-red-50 text-red-600',
+    details: 'Etkili anlatım teknikleri, sahnede profesyonel duruş, ikna gücü ve kurumsal temsil etkisi konularında uygulamalı eğitimler.'
+  },
+  {
+    id: 8,
+    title: 'Dijital Eğitim ve Video İçerik',
+    description: 'Video senaryosu, prodüksiyon, LMS uyumlu içerik üretimi',
+    icon: <FaVideo className="w-6 h-6 sm:w-8 sm:h-8" />,
+    color: 'bg-indigo-50 text-indigo-600',
+    details: 'Video eğitim senaryosu yazma, profesyonel prodüksiyon ve LMS sistemlerine uyumlu dijital içerik üretimi konularında uzman danışmanlık hizmetleri.'
+  },
+  {
+    id: 9,
+    title: 'İş Sağlığı ve Güvenliği Eğitimleri',
+    description: 'Uygulamalı, mevzuata uygun ve farkındalık kazandırıcı İSG modülleri',
+    icon: <FaHardHat className="w-6 h-6 sm:w-8 sm:h-8" />,
+    color: 'bg-yellow-50 text-yellow-600',
+    details: 'Güncel mevzuata uygun, uygulamalı ve çalışanlarda farkındalık oluşturan İş Sağlığı ve Güvenliği eğitim modülleri.'
   }
 ];
 
@@ -139,9 +173,30 @@ const Services = () => {
                 <p className="text-gray-600 text-sm sm:text-base">{activeService.details}</p>
               </div>
               
-              <button className="px-4 sm:px-6 py-2 sm:py-3 bg-primary text-white rounded-md font-medium hover:bg-primary-light transition-colors text-sm sm:text-base">
+              <a 
+                href={`/egitim-alanlarimiz/${activeService.id === 1 ? 'bankacilik-egitimleri' :
+                  activeService.id === 2 ? 'kobi-kredi-skor-yonetimi' :
+                  activeService.id === 3 ? 'satis-egitimleri' :
+                  activeService.id === 4 ? 'musteri-deneyimi-egitimleri' :
+                  activeService.id === 5 ? 'yonetici-gelisimi-ve-kocluk' :
+                  activeService.id === 6 ? 'egiticinin-egitimi' :
+                  activeService.id === 7 ? 'sunum-ve-sahne-becerileri' :
+                  activeService.id === 8 ? 'dijital-egitim-ve-video-icerik' :
+                  'is-sagligi-ve-guvenligi-egitimleri'}`} 
+                className={`inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 ${
+                  activeService.id === 1 ? 'bg-blue-600' :
+                  activeService.id === 2 ? 'bg-purple-600' :
+                  activeService.id === 3 ? 'bg-amber-600' :
+                  activeService.id === 4 ? 'bg-green-600' :
+                  activeService.id === 5 ? 'bg-orange-600' :
+                  activeService.id === 6 ? 'bg-teal-600' :
+                  activeService.id === 7 ? 'bg-red-600' :
+                  activeService.id === 8 ? 'bg-indigo-600' :
+                  'bg-yellow-600'
+                } text-white rounded-md font-medium hover:opacity-90 transition-colors text-sm sm:text-base`}
+              >
                 Detaylı Bilgi
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>

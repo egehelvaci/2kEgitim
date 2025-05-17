@@ -60,7 +60,6 @@ const testimonials = [
 ];
 
 const References = () => {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [mounted, setMounted] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -120,7 +119,7 @@ const References = () => {
   return (
     <section id="references" className="section bg-white py-16">
       <div className="container-custom">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,21 +127,12 @@ const References = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold"
           >
-            <span className="text-primary">Referanslarımız</span>
+            Bize <span className="text-primary">Güvenen Kurumlar</span>
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-gray-600 mt-4 max-w-2xl mx-auto"
-          >
-            Türkiye&apos;nin önde gelen kurumları ile çalışmaktan gurur duyuyoruz.
-          </motion.p>
         </div>
 
         {/* Film Şeridi Şeklinde Kayan Referanslar */}
-        <div className="mb-16 relative overflow-hidden">
+        <div className="mb-6 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
           <div className="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
           
@@ -195,66 +185,24 @@ const References = () => {
             ))}
           </div>
           
-          <div className="mt-6 text-center">
+          <div className="text-center mt-8 mb-4">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-gray-600 max-w-2xl mx-auto mb-6"
+            >
+              Bugüne kadar onlarca kurumla birlikte sahaya çıktık. Sektörlere özel çözümlerimizi görmek için tıklayın.
+            </motion.p>
+            
             <Link 
               href="/referanslarimiz"
-              className="inline-flex items-center text-primary hover:text-primary-dark font-medium transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors shadow-md hover:shadow-lg"
             >
-              Tüm Referanslarımızı Görüntüle
+              Referanslarımızı İnceleyin
               <FaArrowRight className="ml-2" />
             </Link>
-          </div>
-        </div>
-
-        {/* Testimonials */}
-        <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
-          <div className="flex justify-center mb-10">
-            <FaQuoteLeft className="text-primary opacity-20 w-16 h-16" />
-          </div>
-          
-          <div className="relative">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: activeTestimonial === index ? 1 : 0,
-                  x: activeTestimonial === index ? 0 : 20 
-                }}
-                transition={{ duration: 0.6 }}
-                className="text-center"
-                style={{ display: activeTestimonial === index ? 'block' : 'none' }}
-              >
-                <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-                  &quot;{testimonial.content}&quot;
-                </p>
-                
-                <div className="flex flex-col items-center">
-                  <div className="bg-primary text-white p-4 rounded-full mb-4">
-                    <FaUser className="w-6 h-6" />
-                  </div>
-                  <h4 className="font-bold text-lg">{testimonial.author}</h4>
-                  <p className="text-gray-600">{testimonial.position}</p>
-                  <p className="text-primary">{testimonial.company}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Testimonial Navigation */}
-          <div className="flex justify-center mt-10">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveTestimonial(index)}
-                className={`w-3 h-3 rounded-full mx-2 transition-all duration-300 ${
-                  activeTestimonial === index 
-                    ? 'bg-primary w-8' 
-                    : 'bg-gray-300'
-                }`}
-                aria-label={`Testimonial ${index + 1}`}
-              />
-            ))}
           </div>
         </div>
       </div>

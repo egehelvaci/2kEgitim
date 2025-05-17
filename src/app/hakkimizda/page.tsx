@@ -2,39 +2,17 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { FaCheckCircle, FaUsers, FaChalkboardTeacher, FaLaptopCode, FaHandshake } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 
 export default function HakkimizdaPage() {
-  // Değerlerimiz için veri
-  const values = [
-    {
-      icon: <FaUsers className="h-10 w-10 text-accent" />,
-      title: 'Müşteri Odaklılık',
-      description: 'Her kurumun kendine özgü ihtiyaçlarını anlar, çözümlerimizi bu doğrultuda şekillendiririz.'
-    },
-    {
-      icon: <FaChalkboardTeacher className="h-10 w-10 text-accent" />,
-      title: 'Deneyimsel Öğrenme',
-      description: 'Teoriyi pratiğe, deneyimi kalıcı öğrenmeye dönüştüren metodolojiler kullanırız.'
-    },
-    {
-      icon: <FaLaptopCode className="h-10 w-10 text-accent" />,
-      title: 'Yenilikçilik',
-      description: 'Dijital çağın gerektirdiği yenilikçi eğitim çözümlerini sunar, teknolojinin gücünü kullanırız.'
-    },
-    {
-      icon: <FaHandshake className="h-10 w-10 text-accent" />,
-      title: 'İş Ortaklığı',
-      description: 'Müşterilerimizle iş ortağı mantığıyla çalışır, kurumlarının başarısını kendi başarımız olarak görürüz.'
-    }
-  ];
-
-  // Benzersiz Avantajlarımız
-  const advantages = [
-    '29 yıllık saha ve kurumsal deneyim',
-    'Gerçek iş hayatının deneyimlerine dayalı uygulamalı eğitimler',
-    'Eğitimden dijital içerik üretimine anahtar teslim çözümler',
-    'Her aşamada ölçülebilir gelişim hedefi'
+  // 2K Eğitim'in Farkı
+  const differences = [
+    '28 yıllık saha ve eğitim tecrübesi',
+    'Bankacılık, sigorta, telekom, kamu dahil birçok sektörde uygulama',
+    'Kuruma özel eğitim tasarımı',
+    'İçerik geliştirme + uygulama + dijitalleştirme becerisi',
+    'Hazır değil, yaşayan eğitim programları'
   ];
 
   // Sayfa içeriği için animasyon seçenekleri
@@ -68,15 +46,17 @@ export default function HakkimizdaPage() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Hakkımızda</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Sahadan Gelen <span style={{color: "#f5b421"}}>Eğitim Gücü</span></h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-              Gerçek deneyimlerden beslenen eğitimlerimizle kurumunuzun başarısına katkı sağlıyoruz.
+              2K Eğitim ve Danışmanlık, kurucusu Koray Karataş'ın 28 yıllık saha ve eğitim tecrübesiyle kurulmuştur.
+              Eğitimleri hazır kalıplarla değil, kurumun iç dinamiklerini analiz ederek tasarlarız. Sadece bilgi aktarmayı değil, 
+              sahada karşılığı olan davranış dönüşümünü hedefleriz.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Biz Kimiz Section */}
+      {/* Kurucunun Mesajı Section */}
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -85,17 +65,22 @@ export default function HakkimizdaPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="relative h-96"
+              className="relative flex flex-col items-center md:items-start"
             >
-              <Image
-                src="/images/hakkimizda/about-us.jpg"
-                alt="2K Eğitim ve Danışmanlık"
-                fill
-                className="object-cover rounded-xl shadow-lg"
-              />
-              <div className="absolute -bottom-8 -right-8 bg-accent p-6 rounded-xl shadow-lg">
-                <p className="text-white text-2xl font-bold">29+</p>
-                <p className="text-white">Yıllık Deneyim</p>
+              <div className="relative w-56 h-56 md:w-72 md:h-72 mb-4 flex justify-center md:justify-start">
+                <div className="relative w-56 h-56 md:w-72 md:h-72">
+                  <Image
+                    src="/images/hakkimizda/kurucumuz.png"
+                    alt="Koray Karataş"
+                    fill
+                    style={{ objectFit: 'cover', borderRadius: '50%' }}
+                    className="shadow-lg"
+                  />
+                </div>
+              </div>
+              <div className="text-center md:text-left mt-2">
+                <h3 className="text-xl font-bold">Koray Karataş</h3>
+                <p className="text-gray-600">Kurucu – Eğitmen & Danışman</p>
               </div>
             </motion.div>
 
@@ -104,181 +89,90 @@ export default function HakkimizdaPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
+              className="mt-8 md:mt-0"
             >
-              <h2 className="text-3xl font-bold mb-6">Biz Kimiz?</h2>
-              <p className="text-gray-700 mb-4">
-                2K Eğitim ve Danışmanlık, satış, müşteri deneyimi, yönetici gelişimi ve dijital eğitim alanlarında uzmanlaşmış bir eğitim ve gelişim şirketidir.
-              </p>
-              <p className="text-gray-700 mb-4">
-                2K Eğitim ve Danışmanlık, kurucusu Koray Karataş&apos;ın 29 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
-              </p>
-              <p className="text-gray-700">
-                Bankacılık, bireysel emeklilik, hayat ve elementer sigortacılık, tarım, ithalat-ihracat ve finans piyasaları gibi farklı sektörlerde edindiğimiz saha deneyimi, sunduğumuz çözümlerin çok yönlü ve sahaya uyumlu olmasını sağlıyor.
-              </p>
+              <h2 className="text-3xl font-bold mb-6 text-center md:text-left">Kurucunun <span style={{color: "#f5b421"}}>Mesajı</span></h2>
+              <div className="bg-gray-50 p-5 md:p-6 rounded-xl shadow-sm mb-6 relative">
+                <div className="text-4xl md:text-5xl text-gray-200 absolute top-4 left-4">"</div>
+                <p className="text-gray-700 mb-4 relative z-10 px-4 md:px-6 pt-4">
+                  Bir eğitimin kalıcılığı, sahada işe yarayıp yaramadığıyla ölçülür. Bu yüzden yıllardır kurumlara sadece 
+                  içerik değil, sonuç üreten bir yaklaşım sunuyorum. 
+                </p>
+                <p className="text-gray-700 mb-4 relative z-10 px-4 md:px-6 pb-4">
+                  Hazır sunumlar yerine, temsilciyle birlikte sahaya inmeyi tercih ediyorum. Çünkü değişim, uzaktan değil; 
+                  içeriden yaşanır.
+                </p>
+                <div className="text-4xl md:text-5xl text-gray-200 absolute bottom-4 right-4">"</div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Ne Yapıyoruz Section */}
+      {/* 2K Eğitim'in Farkı Section */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-3xl font-bold mb-4"
+              className="text-2xl md:text-3xl font-bold mb-4 md:mb-6"
             >
-              Ne Yapıyoruz?
+              2K Eğitim'in <span style={{color: "#f5b421"}}>Farkı</span>
             </motion.h2>
-            <div className="w-20 h-1 bg-accent mx-auto mb-6"></div>
           </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center"
-              >
-                <div className="flex justify-center mb-4">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <div className="mt-12 bg-white p-8 rounded-xl shadow-md">
-            <ul className="space-y-4">
-              <motion.li 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-start"
-              >
-                <FaCheckCircle className="text-accent mt-1 mr-2 flex-shrink-0" />
-                <p>Satış ve müşteri deneyimi eğitimleriyle sahada sonuç yaratıyoruz.</p>
-              </motion.li>
-              <motion.li 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="flex items-start"
-              >
-                <FaCheckCircle className="text-accent mt-1 mr-2 flex-shrink-0" />
-                <p>Yönetici gelişim programlarıyla liderlik ve koçluk becerilerini güçlendiriyoruz.</p>
-              </motion.li>
-              <motion.li 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="flex items-start"
-              >
-                <FaCheckCircle className="text-accent mt-1 mr-2 flex-shrink-0" />
-                <p>Eğitim ihtiyaçlarını özgün senaryolarla dijital içeriklere dönüştürüyoruz.</p>
-              </motion.li>
-              <motion.li 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="flex items-start"
-              >
-                <FaCheckCircle className="text-accent mt-1 mr-2 flex-shrink-0" />
-                <p>Kurumların kritik bilgi birikimlerini eğitim modülleri hâline getirerek kurumsal hafızayı güçlendiriyoruz.</p>
-              </motion.li>
+          <div className="bg-white p-5 md:p-8 rounded-xl shadow-md max-w-3xl mx-auto">
+            <ul className="space-y-4 md:space-y-6">
+              {differences.map((difference, index) => (
+                <motion.li 
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start"
+                >
+                  <FaCheckCircle className="text-accent mt-1 mr-3 flex-shrink-0 text-base md:text-lg" />
+                  <p className="text-base md:text-lg">{difference}</p>
+                </motion.li>
+              ))}
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Nasıl Çalışıyoruz Section */}
+      {/* Esnek Yapı ve İşbirliği Section */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold mb-6">Nasıl Çalışıyoruz?</h2>
-              <p className="text-gray-700 mb-6">
-                Her kurumun kendine özgü ihtiyaçları olduğunu biliyoruz. Bu nedenle, tüm projelerimizi kurum kültürüne, hedef kitleye ve saha gerçeklerine göre özel olarak tasarlıyoruz.
-              </p>
-              <p className="text-gray-700 mb-6">
-                Eğitimden prodüksiyona kadar her adımda, bilgiyi uygulamaya, deneyimi kalıcı değişime dönüştürmeyi hedefliyoruz.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative h-80"
-            >
-              <Image
-                src="/images/hakkimizda/how-we-work.jpg"
-                alt="Çalışma Metodolojimiz"
-                fill
-                className="object-cover rounded-xl shadow-lg"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Neden 2K Eğitim Section */}
-      <section className="py-16 bg-accent text-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-3xl font-bold mb-4"
             >
-              Neden 2K Eğitim?
-            </motion.h2>
-            <div className="w-20 h-1 bg-white mx-auto"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {advantages.map((advantage, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-start bg-white/10 backdrop-blur-sm p-6 rounded-xl"
-              >
-                <FaCheckCircle className="text-white mt-1 mr-3 flex-shrink-0" />
-                <p className="text-white font-medium">✅ {advantage}</p>
-              </motion.div>
-            ))}
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">Esnek Yapı ve <span style={{color: "#f5b421"}}>İşbirliği Modeli</span></h2>
+              <div className="bg-gray-50 p-5 md:p-8 rounded-xl shadow-md">
+                <p className="text-gray-700 mb-4 text-base md:text-lg">
+                  2K Eğitim, şu anda ağırlıklı olarak kurucusunun birebir yürüttüğü bir yapıdadır. İhtiyaç halinde uzman 
+                  eğitmenlerle iş birliği yapılmakta; her projeye uygun bir çözüm ortağıyla ilerlenmektedir.
+                </p>
+                <p className="text-gray-700 text-base md:text-lg">
+                  Bu esnek yapı, her kurumun kendine özgü ihtiyaçlarına daha hızlı ve etkili çözümler sunmamızı sağlar. 
+                  Sizin ihtiyaçlarınıza en uygun uzman ekibi oluşturarak, en verimli sonucu elde etmeyi hedefliyoruz.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-16 bg-white text-center">
-        <div className="container-custom">
+      {/* CTA Section */}
+      <section className="py-12 md:py-16" style={{backgroundColor: "#f5b421"}}>
+        <div className="container-custom text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -286,13 +180,15 @@ export default function HakkimizdaPage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Sizden birimiymiş&ccedil;esine çalışıyor, kurumunuzun vizyonuna katkı sağlıyoruz...</h2>
-            <p className="text-gray-600 mb-8">
-              Kurumunuzun gelişimine nasıl katkıda bulunabileceğimizi keşfetmek için bizimle iletişime geçin.
-            </p>
-            <button className="bg-accent text-white font-bold py-4 px-8 rounded-full hover:bg-accent-dark transition-colors shadow-lg hover:shadow-xl">
-              İletişime Geçin
-            </button>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
+              Kurumunuza özel çözüm tasarımı için birlikte konuşalım
+            </h2>
+            <Link 
+              href="/iletisim"
+              className="inline-flex items-center bg-white text-accent font-bold py-3 md:py-4 px-6 md:px-8 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 mt-4 md:mt-6 text-sm md:text-base"
+            >
+              Bizimle İletişime Geçin <FaArrowRight className="ml-2" />
+            </Link>
           </motion.div>
         </div>
       </section>

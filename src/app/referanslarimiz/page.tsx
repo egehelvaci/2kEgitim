@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
 
 // Logo bilgilerini içeren dizi
 const references = [
@@ -44,6 +46,26 @@ const sectors = [
   { name: 'Diğer', count: 3 },
 ];
 
+// Çözüm ortağı olduğumuz alanlar
+const solutionAreas = [
+  {
+    title: "Bankacılık Sektörü",
+    description: "20.000'den fazla katılımcıyla çalıştık. Şube satış ekiplerinden çağrı merkezlerine, yöneticilikten yatırım bankacılığına kadar tüm segmentlerde, kurumun diliyle konuşan eğitim çözümleri sunduk. Kimi projelerde sahaya inerek satışlara eşlik ettik, müşteriyle birlikte süreci deneyimledik."
+  },
+  {
+    title: "Sigorta ve Bireysel Emeklilik",
+    description: "Çağrı merkezi, saha satış ve yöneticilere yönelik müşteri memnuniyeti dönüşüm projelerinde yer aldık. Gerçek vakalara ve kurum içi ihtiyaçlara göre içerik geliştirildi. Uygulamalar, iş ortaklarına ödül kazandıracak etki düzeyine ulaştı."
+  },
+  {
+    title: "Telekomünikasyon",
+    description: "Temsilcilerin ses tonu, temsil dili ve ikna becerileri üzerine odaklanan eğitimlerde, gerçek çağrı kayıtları üzerinden çalışıldı. İletişimi sadece teknik değil, duygusal bir süreç olarak ele aldık."
+  },
+  {
+    title: "Kamu ve Kurumsal Dönüşüm",
+    description: "Beyaz yaka ve mavi yaka çalışanlarla aynı sahada çalışılabilecek ortak bir eğitim dili kurduk. İç eğitmen havuzu kurulumu, kurum içi bilgi birikiminin eğitime dönüşmesi gibi yapısal katkılar sağladık."
+  }
+];
+
 export default function ReferanslarimizPage() {
   const [mounted, setMounted] = useState(false);
 
@@ -62,10 +84,12 @@ export default function ReferanslarimizPage() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Referanslarımız</h1>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-              Türkiye&apos;nin önde gelen kuruluşları 2K Eğitim&apos;in kaliteli eğitim ve danışmanlık 
-              hizmetlerini tercih ediyor. İşte bazı değerli iş ortaklarımız.
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Bize <span style={{color: "#f5b421"}}>Güvenenler</span></h1>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+              Sadece eğitim vermiyoruz; birlikte tasarlıyor, birlikte uyguluyoruz.
+            </p>
+            <p className="text-md text-gray-600 max-w-3xl mx-auto mb-10">
+              Her kurumun iç dinamiklerine özel çözümlerle, sahada gerçek dönüşüm yaratıyoruz.
             </p>
           </motion.div>
 
@@ -90,7 +114,18 @@ export default function ReferanslarimizPage() {
       {/* Referanslar Logoları */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center mb-12">Güven Duyulan İş Ortağınız</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-4">Güven Duyulan <span style={{color: "#f5b421"}}>İş Ortağınız</span></h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              2K Eğitim olarak, kurumlara özel çözümlerimiz ve deneyimli ekibimizle, 
+              eğitim ve danışmanlık alanında güvenilir bir iş ortağıyız.
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
+              28 yıllık deneyimimizle, Türkiye'nin önde gelen kuruluşlarına özel
+              eğitim ve danışmanlık çözümleri sunuyoruz. İşte birlikte çalıştığımız bazı
+              değerli iş ortaklarımız.
+            </p>
+          </div>
           
           {mounted && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -113,8 +148,36 @@ export default function ReferanslarimizPage() {
         </div>
       </section>
 
+      {/* Çözüm Ortağı Olduğumuz Alanlar */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Çözüm Ortağı Olduğumuz <span style={{color: "#f5b421"}}>Alanlar</span></h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Farklı sektörlerde edindiğimiz deneyimlerle, kurumların ihtiyaçlarına özel eğitim ve danışmanlık çözümleri sunuyoruz.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {solutionAreas.map((area, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 p-6 rounded-xl shadow-sm"
+              >
+                <h3 className="text-xl font-bold mb-4 text-accent">{area.title}</h3>
+                <p className="text-gray-700">{area.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-16 bg-accent">
+      <section className="py-16" style={{backgroundColor: "#f5b421"}}>
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,14 +186,28 @@ export default function ReferanslarimizPage() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Siz de Referanslarımız Arasında Yer Alın</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <span className="block mb-2">Hazır Eğitim Değil,</span>
+              <span className="block"><span style={{color: "#000000"}}>Kurumunuza Özel</span> Çözüm Sunuyoruz</span>
+            </h2>
             <p className="text-white text-lg mb-8 opacity-90">
-              Kurumunuzun eğitim ve gelişim ihtiyaçları için size özel çözümlerimizle tanışmak ister misiniz?
-              Hemen iletişime geçin, birlikte başarı hikayenizi yazalım.
+              Her kurumun öğrenme ihtiyacı farklıdır. Biz, sizinle birlikte tasarlıyoruz. 
+              Hemen tanışalım, birlikte en doğru çözümü oluşturalım...
             </p>
-            <button className="bg-white text-accent font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
-              Bizimle İletişime Geçin
-            </button>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <Link 
+                href="/iletisim"
+                className="bg-white text-accent font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                Bizimle İletişime Geçin
+              </Link>
+              <Link 
+                href="/egitim-alanlarimiz"
+                className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 flex items-center"
+              >
+                Eğitim Alanlarımızı İnceleyin <FaArrowRight className="ml-2" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

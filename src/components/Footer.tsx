@@ -43,7 +43,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <FooterLink href="/">Ana Sayfa</FooterLink>
-              <FooterLink href="/egitim-cozumlerimiz">Eğitim Çözümlerimiz</FooterLink>
+              <FooterLink href="/egitim-alanlarimiz">Eğitim Alanlarımız</FooterLink>
               <FooterLink href="/referanslarimiz">Referanslarımız</FooterLink>
               <FooterLink href="/hakkimizda">Hakkımızda</FooterLink>
               <FooterLink href="/iletisim">İletişim</FooterLink>

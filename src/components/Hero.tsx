@@ -69,15 +69,26 @@ const Hero = () => {
           whileHover={{ scale: 1.1 }}
         >
           <div className="flex flex-col items-center">
-            <span className="text-amber-300 font-medium mb-2 text-sm drop-shadow-md">Aşağı Kaydırın</span>
-            <div className="bg-gradient-to-r from-amber-500 to-amber-400 p-3 rounded-full shadow-lg shadow-amber-500/30 backdrop-blur-sm hover:shadow-amber-400/50 transition-all duration-300">
+            <span className="font-medium mb-2 text-sm drop-shadow-md" style={{color: "#f5b421"}}>Aşağı Kaydırın</span>
+            <div className="p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300" 
+              style={{
+                background: `linear-gradient(to right, #f5b421, #f5b421)`,
+                boxShadow: `0 10px 15px -3px rgba(245, 180, 33, 0.3), 0 4px 6px -4px rgba(245, 180, 33, 0.3)`
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 10px 15px -3px rgba(245, 180, 33, 0.5), 0 4px 6px -4px rgba(245, 180, 33, 0.5)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = `0 10px 15px -3px rgba(245, 180, 33, 0.3), 0 4px 6px -4px rgba(245, 180, 33, 0.3)`;
+              }}
+            >
               <FaChevronDown className="w-5 h-5 text-white" />
             </div>
           </div>
         </motion.div>
         
         {/* Ana İçerik */}
-        <div className="container relative z-10 px-4 md:px-0 text-center mx-auto flex-grow">
+        <div className="container relative z-10 px-4 md:px-0 text-center mx-auto pt-20 md:pt-28 lg:pt-36 flex flex-col justify-center flex-grow">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,23 +96,37 @@ const Hero = () => {
             className="max-w-4xl mx-auto"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-white drop-shadow-lg">
-              Sadece Bildiğimizi Değil, <span className="text-amber-300">Yaşadıklarımızı</span> Paylaşıyoruz
+              Eğitim Değil, <span style={{color: "#f5b421"}}>Davranış Değişimi</span> Tasarlıyoruz
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto drop-shadow-md">
-              Hayatın içinde, işin mutfağında öğrenilmiş bilgiyle eğitim ve gelişim çözümleri üretiyoruz.
+              Saha gerçekleriyle yoğrulmuş, ölçülebilir ve uygulanabilir kurumsal gelişim çözümleri.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link 
-                href="/egitim-cozumlerimiz" 
-                className="inline-flex items-center justify-center bg-white text-amber-600 hover:bg-gray-100 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl"
+                href="/iletisim" 
+                className="inline-flex items-center justify-center bg-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl"
+                style={{color: "#f5b421"}}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f8f8f8';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'white';
+                }}
               >
-                Eğitim Çözümlerimiz
+                Bize Ulaşın
               </Link>
               <Link 
                 href="/iletisim" 
-                className="inline-flex items-center justify-center bg-amber-500 text-white hover:bg-amber-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl mt-2 sm:mt-0"
+                className="inline-flex items-center justify-center text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl mt-2 sm:mt-0"
+                style={{backgroundColor: "#f5b421"}}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#e5a91e';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f5b421';
+                }}
               >
-                Bizimle İletişime Geçin
+                Kuruma Özel Çözüm Talep Et
               </Link>
             </div>
           </motion.div>
@@ -112,31 +137,31 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative z-10 w-full px-3 sm:px-4 md:px-10 mt-auto"
+          className="relative z-10 w-full px-3 sm:px-4 md:px-10 mt-6 sm:mt-8 md:mt-auto"
         >
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-7xl mx-auto mt-8 sm:mt-12 md:mt-0">
             {/* Uzman */}
-            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md border border-amber-100 backdrop-blur-sm hover:shadow-lg transition-all">
-              <h3 className="text-lg sm:text-xl font-bold text-amber-600 mb-1 sm:mb-2">Uzman</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-700">Alanında uzman eğitimcilerle kaliteli eğitim deneyimi</p>
+            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md backdrop-blur-sm hover:shadow-lg transition-all" style={{borderColor: "rgba(245, 180, 33, 0.3)"}}>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style={{color: "#f5b421"}}>Uzman</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-700">28 yıllık saha deneyimiyle oluşturulmuş, sektöre özel içerikler.</p>
             </div>
             
             {/* Sade */}
-            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md border border-amber-100 backdrop-blur-sm hover:shadow-lg transition-all">
-              <h3 className="text-lg sm:text-xl font-bold text-amber-600 mb-1 sm:mb-2">Sade</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-700">Karmaşıklıktan uzak, açık ve net anlatımlar</p>
+            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md backdrop-blur-sm hover:shadow-lg transition-all" style={{borderColor: "rgba(245, 180, 33, 0.3)"}}>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style={{color: "#f5b421"}}>Sade</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-700">Eğitimlerimizde karmaşa değil, netlik ve akılda kalıcılık esastır.</p>
             </div>
             
             {/* Anlaşılır */}
-            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md border border-amber-100 backdrop-blur-sm hover:shadow-lg transition-all">
-              <h3 className="text-lg sm:text-xl font-bold text-amber-600 mb-1 sm:mb-2">Anlaşılır</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-700">Herkesin anlayabileceği şekilde ifade edilmiş kavramlar</p>
+            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md backdrop-blur-sm hover:shadow-lg transition-all" style={{borderColor: "rgba(245, 180, 33, 0.3)"}}>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style={{color: "#f5b421"}}>Anlaşılır</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-700">Teknik detayları yalınlaştırır, herkesin kolayca içselleştirmesini sağlarız.</p>
             </div>
             
             {/* Uygulanabilir */}
-            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md border border-amber-100 backdrop-blur-sm hover:shadow-lg transition-all">
-              <h3 className="text-lg sm:text-xl font-bold text-amber-600 mb-1 sm:mb-2">Uygulanabilir</h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-700">Teoriden çok pratiğe dayalı, hemen kullanılabilir bilgiler</p>
+            <div className="bg-cream-50/95 p-3 sm:p-4 md:p-6 rounded-lg shadow-md backdrop-blur-sm hover:shadow-lg transition-all" style={{borderColor: "rgba(245, 180, 33, 0.3)"}}>
+              <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2" style={{color: "#f5b421"}}>Uygulanabilir</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-700">Sahada hemen kullanabileceğiniz gerçek çözümler sunarız.</p>
             </div>
           </div>
         </motion.div>

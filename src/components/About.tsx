@@ -40,7 +40,7 @@ const About = () => {
                   <div className="flex justify-center mb-3 sm:mb-4">
                     <FaUsers className="w-8 h-8 sm:w-12 sm:h-12 text-accent" />
                   </div>
-                  <div className="text-2xl sm:text-4xl font-bold text-gray-800">2000+</div>
+                  <div className="text-2xl sm:text-4xl font-bold text-gray-800">40.000+</div>
                   <div className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Katılımcı</div>
                 </div>
                 
@@ -48,7 +48,7 @@ const About = () => {
                   <div className="flex justify-center mb-3 sm:mb-4">
                     <FaClock className="w-8 h-8 sm:w-12 sm:h-12 text-accent" />
                   </div>
-                  <div className="text-2xl sm:text-4xl font-bold text-gray-800">29+</div>
+                  <div className="text-2xl sm:text-4xl font-bold text-gray-800">28+</div>
                   <div className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Yıllık Deneyim</div>
                 </div>
               </div>
@@ -71,7 +71,7 @@ const About = () => {
             </p>
             
             <p className="text-gray-600 mb-4 sm:mb-6">
-              2K Eğitim ve Danışmanlık, kurucusu Koray Karataş&apos;ın 29 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
+              2K Eğitim ve Danışmanlık, kurucusu Koray Karataş&apos;ın 28 yıllık saha tecrübesi ve kurumsal bilgi birikimi üzerine inşa edilmiştir.
             </p>
             
             <p className="text-gray-600 mb-6 sm:mb-8">
