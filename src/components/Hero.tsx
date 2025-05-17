@@ -39,7 +39,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="fullscreen-hero min-h-[100vh] relative">
+      <section className="fullscreen-hero relative pt-24 pb-48 sm:pb-40 md:pb-32 min-h-screen flex flex-col justify-between">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
           <video
@@ -76,12 +76,13 @@ const Hero = () => {
           </div>
         </motion.div>
         
-        <div className="container relative z-10 px-4 md:px-0 text-center flex flex-col justify-center min-h-[100vh] pb-32 sm:pb-40 md:pb-32">
+        {/* Ana İçerik */}
+        <div className="container relative z-10 px-4 md:px-0 text-center mx-auto flex-grow">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto pt-16 sm:pt-0"
+            className="max-w-4xl mx-auto"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-white drop-shadow-lg">
               Sadece Bildiğimizi Değil, <span className="text-amber-300">Yaşadıklarımızı</span> Paylaşıyoruz
@@ -111,7 +112,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="absolute bottom-0 left-0 right-0 w-full px-3 sm:px-4 md:px-10 z-10 pb-4 sm:pb-8 md:pb-12"
+          className="relative z-10 w-full px-3 sm:px-4 md:px-10 mt-auto"
         >
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-7xl mx-auto">
             {/* Uzman */}
