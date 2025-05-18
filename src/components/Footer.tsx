@@ -16,10 +16,14 @@ const Footer = () => {
             <Link href="/" className="inline-block mb-4 sm:mb-6">
               <div className="w-48 sm:w-60 h-20 sm:h-24 relative">
                 <Image 
-                  src="/images/logo/2k_logo.png" 
+                  src="/images/logo/logosaydam2kegitim.png" 
                   alt="2K Eğitim Logo" 
                   fill
                   className="object-contain"
+                  style={{ 
+                    objectFit: 'contain',
+                    objectPosition: 'left center'
+                  }}
                   priority
                 />
               </div>
