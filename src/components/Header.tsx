@@ -533,11 +533,12 @@ const flip3DClass = css`
     white-space: nowrap;
     border-right: none;
     animation: ${typingWithDelay} 15s ease-in-out infinite;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), 
-                0 0 1px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 
+                0 0 2px rgba(0, 0, 0, 0.2),
+                2px 2px 4px rgba(0, 0, 0, 0.1);
     width: 0;
     font-style: normal;
-    -webkit-text-stroke: 0.1px rgba(245, 180, 33, 0.7);
+    -webkit-text-stroke: 0.1px rgba(245, 180, 33, 0.8);
     padding-top: 3px;
     padding-bottom: 4px;
     line-height: 1.3;
