@@ -7,6 +7,7 @@ import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
 import { keyframes } from '@emotion/react';
 import { css } from '@emotion/css';
 import { injectGlobal } from '@emotion/css';
+import '@fontsource/quicksand';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -176,8 +177,8 @@ const Header = () => {
             </Link>
             
             {/* Slogan */}
-            <div className={`hidden md:block ml-6 overflow-hidden ${scrolled ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
-              <div className="typing-text">"Sizden Biriymişcesine"</div>
+            <div className={`hidden md:block ml-8 overflow-hidden ${scrolled ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+              <div className="typing-text">Sizden Biriymişcesine...</div>
             </div>
           </div>
 
@@ -498,27 +499,16 @@ const flip3D = keyframes`
   }
 `;
 
-// Slogan için soldan sağa parıldama animasyonu
-const shimmer = keyframes`
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-`;
-
-// Yazı yazma ve tekrar başlama animasyonu
-const typingAndReset = keyframes`
-  0%, 5% { width: 0; opacity: 1; }
-  25%, 85% { width: 100%; opacity: 1; }
-  85.1%, 100% { width: 0; opacity: 0; }
+// Sadece yazma animasyonu
+const justTyping = keyframes`
+  from { width: 0 }
+  to { width: 100% }
 `;
 
 // Cursor yanıp sönme animasyonu
 const blink = keyframes`
   from, to { border-color: transparent }
-  50% { border-color: black; }
+  50% { border-color: #1a1a1a; }
 `;
 
 const flip3DClass = css`
@@ -532,35 +522,25 @@ const flip3DClass = css`
     }
   }
   
-  .slogan-text {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: white;
-    letter-spacing: 0.5px;
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 1px rgba(255,255,255,0.2);
-    animation: ${shimmer} 3s infinite linear;
-    font-family: 'Rubik', sans-serif;
-    white-space: nowrap;
-  }
-  
   .typing-text {
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    color: black;
-    letter-spacing: 0.5px;
-    font-family: 'Rubik', sans-serif;
+    color: #333333;
+    letter-spacing: 0.7px;
+    font-family: 'Quicksand', sans-serif;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 2px solid black;
-    animation: 
-      ${typingAndReset} 12s steps(25, start) infinite;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+    border-right: none;
+    animation: ${justTyping} 3s steps(23, end) forwards;
+    text-shadow: 1px 1px 3px rgba(26, 26, 26, 0.4), 
+                0 0 2px rgba(255, 255, 255, 0.3),
+                2px 2px 4px rgba(26, 26, 26, 0.2);
     width: 0;
+    font-style: normal;
+    -webkit-text-stroke: 0.1px #333;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    line-height: 1.4;
   }
 `;
 
