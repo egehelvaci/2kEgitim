@@ -526,19 +526,19 @@ const flip3DClass = css`
   .typing-text {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #f5b421;
+    color: #333333;
     letter-spacing: 0.7px;
     font-family: 'Quicksand', sans-serif;
     overflow: hidden;
     white-space: nowrap;
     border-right: none;
     animation: ${typingWithDelay} 15s ease-in-out infinite;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 
-                0 0 2px rgba(0, 0, 0, 0.2),
-                2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 3px rgba(26, 26, 26, 0.4), 
+                0 0 2px rgba(255, 255, 255, 0.3),
+                2px 2px 4px rgba(26, 26, 26, 0.2);
     width: 0;
     font-style: normal;
-    -webkit-text-stroke: 0.1px rgba(245, 180, 33, 0.8);
+    -webkit-text-stroke: 0.1px #333;
     padding-top: 3px;
     padding-bottom: 4px;
     line-height: 1.3;
