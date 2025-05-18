@@ -137,42 +137,49 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center relative group">
-            <div className={`w-44 h-16 relative ${scrolled ? 'scale-95' : 'scale-100'} transition-all duration-300 pl-2 pr-6 flip-3d-effect`}>
-              <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'} pulse-animation`}>
-                <Image 
-                  src="/images/logo/logosaydam2kegitim.png" 
-                  alt="2K Eğitim Logo" 
-                  fill
-                  className="object-contain"
-                  style={{ 
-                    objectFit: 'contain',
-                    objectPosition: 'left center'
-                  }}
-                  priority
-                />
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center relative group">
+              <div className={`w-44 h-16 relative ${scrolled ? 'scale-95' : 'scale-100'} transition-all duration-300 pl-2 pr-6 flip-3d-effect`}>
+                <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'} pulse-animation`}>
+                  <Image 
+                    src="/images/logo/logosaydam2kegitim.png" 
+                    alt="2K Eğitim Logo" 
+                    fill
+                    className="object-contain"
+                    style={{ 
+                      objectFit: 'contain',
+                      objectPosition: 'left center'
+                    }}
+                    priority
+                  />
+                </div>
+                <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'} pulse-animation`}>
+                  <Image 
+                    src="/images/logo/logosaydam2kegitim.png" 
+                    alt="2K Eğitim Logo" 
+                    fill
+                    className="object-contain"
+                    style={{ 
+                      objectFit: 'contain',
+                      objectPosition: 'left center'
+                    }}
+                    priority
+                  />
+                </div>
               </div>
-              <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'} pulse-animation`}>
-                <Image 
-                  src="/images/logo/logosaydam2kegitim.png" 
-                  alt="2K Eğitim Logo" 
-                  fill
-                  className="object-contain"
-                  style={{ 
-                    objectFit: 'contain',
-                    objectPosition: 'left center'
-                  }}
-                  priority
-                />
-              </div>
+              <div 
+                className={`absolute -bottom-1 left-0 h-0.5 bg-white rounded-full transition-all duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`} 
+                style={{ width: 0 }}
+                onMouseEnter={(e) => e.currentTarget.style.width = '100%'}
+                onMouseLeave={(e) => e.currentTarget.style.width = '0'}
+              />
+            </Link>
+            
+            {/* Slogan */}
+            <div className={`hidden md:block ml-6 overflow-hidden ${scrolled ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+              <div className="typing-text">"Sizden Biriymişcesine"</div>
             </div>
-            <div 
-              className={`absolute -bottom-1 left-0 h-0.5 bg-white rounded-full transition-all duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`} 
-              style={{ width: 0 }}
-              onMouseEnter={(e) => e.currentTarget.style.width = '100%'}
-              onMouseLeave={(e) => e.currentTarget.style.width = '0'}
-            />
-          </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -491,6 +498,29 @@ const flip3D = keyframes`
   }
 `;
 
+// Slogan için soldan sağa parıldama animasyonu
+const shimmer = keyframes`
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+`;
+
+// Yazı yazma ve tekrar başlama animasyonu
+const typingAndReset = keyframes`
+  0%, 5% { width: 0; opacity: 1; }
+  25%, 85% { width: 100%; opacity: 1; }
+  85.1%, 100% { width: 0; opacity: 0; }
+`;
+
+// Cursor yanıp sönme animasyonu
+const blink = keyframes`
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+`;
+
 const flip3DClass = css`
   .flip-3d-effect {
     animation: ${flip3D} 5s infinite ease-in-out;
@@ -500,6 +530,37 @@ const flip3DClass = css`
     &:hover {
       animation-play-state: paused;
     }
+  }
+  
+  .slogan-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 1px rgba(255,255,255,0.2);
+    animation: ${shimmer} 3s infinite linear;
+    font-family: 'Rubik', sans-serif;
+    white-space: nowrap;
+  }
+  
+  .typing-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: black;
+    letter-spacing: 0.5px;
+    font-family: 'Rubik', sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid black;
+    animation: 
+      ${typingAndReset} 12s steps(25, start) infinite;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+    width: 0;
   }
 `;
 
