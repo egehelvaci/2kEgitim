@@ -4,6 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
+import { keyframes } from '@emotion/react';
+import { css } from '@emotion/css';
+import { injectGlobal } from '@emotion/css';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,11 +36,21 @@ const Header = () => {
     
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      // Sayfa kaydırıldığında açık menüyü kapat
+      if (isOpen) {
+        setIsOpen(false);
+      }
+      if (dropdownOpen) {
+        setDropdownOpen(false);
+      }
+      if (mobileDropdownOpen) {
+        setMobileDropdownOpen(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isOpen, dropdownOpen, mobileDropdownOpen]);
 
   // Dropdown dışına tıklandığında kapatma
   useEffect(() => {
@@ -79,12 +92,12 @@ const Header = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center">
-              <div className="w-36 h-16 relative">
+              <div className="w-36 h-16 relative rotating-aura">
                 <Image 
                   src="/images/logo/logosaydam2kegitim.png" 
                   alt="2K Eğitim Logo" 
                   fill
-                  className="object-contain"
+                  className="object-contain pulse-animation"
                   style={{ 
                     objectFit: 'contain',
                     objectPosition: 'left center'
@@ -125,8 +138,8 @@ const Header = () => {
       <div className="container mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center relative group">
-            <div className={`w-44 h-16 relative ${scrolled ? 'scale-95' : 'scale-100'} transition-all duration-300 pl-2 pr-6`}>
-              <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={`w-44 h-16 relative ${scrolled ? 'scale-95' : 'scale-100'} transition-all duration-300 pl-2 pr-6 flip-3d-effect`}>
+              <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'} pulse-animation`}>
                 <Image 
                   src="/images/logo/logosaydam2kegitim.png" 
                   alt="2K Eğitim Logo" 
@@ -139,7 +152,7 @@ const Header = () => {
                   priority
                 />
               </div>
-              <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-0'} pulse-animation`}>
                 <Image 
                   src="/images/logo/logosaydam2kegitim.png" 
                   alt="2K Eğitim Logo" 
@@ -464,5 +477,35 @@ const MobileNavLink = ({
     </Link>
   );
 };
+
+// 3D Flip Animasyonu için CSS
+const flip3D = keyframes`
+  0% {
+    transform: perspective(800px) rotateY(0);
+  }
+  50% {
+    transform: perspective(800px) rotateY(15deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(0);
+  }
+`;
+
+const flip3DClass = css`
+  .flip-3d-effect {
+    animation: ${flip3D} 5s infinite ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+`;
+
+// Mevcut kodu düzenleyip, CSS'i global olarak ekleyelim
+injectGlobal`
+  ${flip3DClass}
+`;
 
 export default Header; 

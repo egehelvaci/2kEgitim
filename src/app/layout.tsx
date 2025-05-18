@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Rubik } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-const inter = Inter({ 
+const rubik = Rubik({ 
   subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap'
+  variable: '--font-rubik',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800']
 })
 
 export const metadata: Metadata = {
@@ -45,8 +46,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="tr" className={inter.variable}>
-      <body className={inter.className}>
+    <html lang="tr" className={rubik.variable}>
+      <body className={rubik.className}>
         <Header />
         <div className="content-wrapper">
           {children}

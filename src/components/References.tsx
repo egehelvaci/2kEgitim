@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaQuoteLeft, FaUser, FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 
 // Güncellenmiş logo bilgileri - company-logos klasöründen
 const references = [
@@ -33,30 +33,6 @@ const references = [
   { name: 'Türkiye İş Bankası', logo: '/images/referanslar/company-logos/işbankası.png' },
   { name: 'Vakıfbank', logo: '/images/referanslar/company-logos/vakıfbank.png' },
   { name: 'Ziraat Bankası', logo: '/images/referanslar/company-logos/ziraatbankasi.png' },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    content: "2K Eğitim ile çalışmak ekibimiz için büyük bir dönüm noktası oldu. Satış ekibimizin performansında gözle görülür bir artış yaşadık. Eğitimlerin pratik vaka çalışmalarıyla desteklenmesi büyük katkı sağladı.",
-    author: "Ayşe Kara",
-    position: "İnsan Kaynakları Direktörü",
-    company: "Turkcell"
-  },
-  {
-    id: 2,
-    content: "Bankacılık sektörünün dinamik yapısına uygun olarak tasarlanmış eğitim programı tam ihtiyacımız olan konuları kapsıyordu. Eğitmenin finans sektörü deneyimi ve interaktif eğitim yaklaşımı çok etkileyiciydi.",
-    author: "Mehmet Yılmaz",
-    position: "Eğitim ve Gelişim Müdürü",
-    company: "Akbank"
-  },
-  {
-    id: 3,
-    content: "Sigorta satış ekibimiz için hazırlanan özel program beklentilerimizin üzerinde sonuçlar verdi. Çalışanlarımızın müşteri ilişkileri ve ikna becerileri önemli ölçüde arttı. 2K Eğitim ekibinin profesyonel yaklaşımı için teşekkür ederiz.",
-    author: "Kemal Demir",
-    position: "Satış Direktörü",
-    company: "Aksigorta"
-  },
 ];
 
 const References = () => {

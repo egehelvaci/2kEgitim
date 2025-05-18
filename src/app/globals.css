@@ -8,12 +8,14 @@
   --primary-color: 193, 18, 18;
   --secondary-color: 150, 15, 15;
   --accent-color: 245, 158, 11;
+  --font-rubik: 'Rubik', sans-serif;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: var(--font-rubik);
 }
 
 body {
@@ -137,4 +139,244 @@ body {
 /* Metin kenar boşluğu ayarları */
 .mobile-text-wrapper {
   @apply px-4 sm:px-0;
+}
+
+/* Nefes alma animasyonu - Geliştirilmiş */
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 0 rgba(245, 180, 33, 0));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.3) drop-shadow(0 0 8px rgba(245, 180, 33, 0.6));
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 0 rgba(245, 180, 33, 0));
+  }
+}
+
+.breathing-animation {
+  animation: breathing 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transform-origin: center;
+}
+
+.breathing-animation-subtle {
+  animation: breathing 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transform-origin: center;
+}
+
+.breathing-animation-fast {
+  animation: breathing 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transform-origin: center;
+}
+
+.breathing-glow {
+  position: relative;
+}
+
+.breathing-glow::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(245, 180, 33, 0.4);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  animation: breathingGlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes breathingGlow {
+  0% { opacity: 0.2; transform: scale(0.9); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+  100% { opacity: 0.2; transform: scale(0.9); }
+}
+
+/* Parlama efekti */
+@keyframes shineEffect {
+  0% { 
+    background-position: -100px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% { 
+    background-position: 300px;
+    opacity: 0;
+  }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transform: skewX(-20deg);
+  animation: shineEffect 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Alternatif Logo Animasyonları */
+
+/* 1. Nabız Atışı Animasyonu */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  5% {
+    transform: scale(1.05);
+    filter: brightness(1.2) drop-shadow(0 0 6px rgba(245, 180, 33, 0.5));
+  }
+  15% {
+    transform: scale(0.97);
+    filter: brightness(0.9);
+  }
+  25% {
+    transform: scale(1.02);
+    filter: brightness(1.1) drop-shadow(0 0 4px rgba(245, 180, 33, 0.3));
+  }
+  35% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transform-origin: center;
+}
+
+/* 2. Dönen Aura Efekti */
+.rotating-aura {
+  position: relative;
+}
+
+.rotating-aura::before,
+.rotating-aura::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent, rgba(245, 180, 33, 0.4), transparent);
+  animation: rotate 8s linear infinite;
+  z-index: -1;
+}
+
+.rotating-aura::after {
+  animation: rotate 10s linear infinite reverse;
+  filter: blur(15px);
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 3. Gökkuşağı Parlaması Efekti */
+@keyframes rainbowGlow {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(245, 180, 33, 0.8)) brightness(1);
+  }
+  25% {
+    filter: drop-shadow(0 0 5px rgba(255, 60, 0, 0.8)) brightness(1.1);
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgba(0, 170, 255, 0.8)) brightness(1.2);
+  }
+  75% {
+    filter: drop-shadow(0 0 5px rgba(100, 200, 50, 0.8)) brightness(1.1);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px rgba(245, 180, 33, 0.8)) brightness(1);
+  }
+}
+
+.rainbow-glow {
+  animation: rainbowGlow 10s ease-in-out infinite;
+}
+
+/* 4. 3D Döndürme Efekti */
+@keyframes flip3D {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  10% {
+    transform: perspective(800px) rotateY(10deg);
+    filter: brightness(1.1);
+  }
+  50% {
+    transform: perspective(800px) rotateY(-10deg);
+    filter: brightness(1.2);
+  }
+  90% {
+    transform: perspective(800px) rotateY(10deg);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+}
+
+.flip-3d-effect {
+  animation: flip3D 8s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* 5. Işık Tüneli Efekti */
+.light-tunnel {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-tunnel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 50%, rgba(245, 180, 33, 0.5) 150%);
+  animation: tunnelEffect 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes tunnelEffect {
+  0% { 
+    transform: scale(0.5);
+    opacity: 0.2;
+  }
+  50% { 
+    transform: scale(1.5);
+    opacity: 0.4;
+  }
+  100% { 
+    transform: scale(0.5);
+    opacity: 0.2;
+  }
 } 

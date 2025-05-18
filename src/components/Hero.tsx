@@ -4,10 +4,13 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaChevronDown } from 'react-icons/fa';
 import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 
 const Hero = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,12 +25,59 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    // Video yüklendiğinde otomatik başlatma
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error("Video otomatik başlatılamadı:", error);
-      });
-    }
+    // Video yüklendiğinde otomatik başlatma için gelişmiş yaklaşım
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    // Video yükleme işleyicisi
+    const handleCanPlay = () => {
+      setVideoLoaded(true);
+      
+      // Video oynatımını dene - kullanıcı etkileşimi ile aktifleştirme için
+      const attemptPlay = () => {
+        videoElement.play().catch(error => {
+          console.warn("Video otomatik başlatılamadı, kullanıcı etkileşimi gerekebilir:", error);
+          // Hata durumunda da arka plan resmi gösteriliyor olacak
+          setVideoError(true);
+        });
+      };
+
+      // Kullanıcı etkileşimini dinle
+      const handleUserInteraction = () => {
+        if (videoError) {
+          attemptPlay();
+          setVideoError(false);
+        }
+      };
+
+      // Hemen oynatmayı dene
+      attemptPlay();
+
+      // Kullanıcı etkileşimi dinleyicileri
+      document.addEventListener('click', handleUserInteraction, { once: true });
+      document.addEventListener('touchstart', handleUserInteraction, { once: true });
+      document.addEventListener('scroll', handleUserInteraction, { once: true });
+      
+      return () => {
+        document.removeEventListener('click', handleUserInteraction);
+        document.removeEventListener('touchstart', handleUserInteraction);
+        document.removeEventListener('scroll', handleUserInteraction);
+      };
+    };
+
+    // Video yükleme hatası
+    const handleError = () => {
+      console.error("Video yüklenemedi");
+      setVideoError(true);
+    };
+
+    videoElement.addEventListener('canplay', handleCanPlay);
+    videoElement.addEventListener('error', handleError);
+    
+    return () => {
+      videoElement.removeEventListener('canplay', handleCanPlay);
+      videoElement.removeEventListener('error', handleError);
+    };
   }, []);
 
   const scrollToContent = () => {
@@ -40,16 +90,30 @@ const Hero = () => {
   return (
     <>
       <section className="fullscreen-hero relative pt-24 pb-64 sm:pb-72 md:pb-64 min-h-screen flex flex-col justify-between">
-        {/* Background Video */}
+        {/* Background Video ve Fallback Resim */}
         <div className="absolute inset-0 z-0">
+          {/* Arka Plan Resmi (video görüntülenene kadar veya hata durumunda) */}
+          <div className={`absolute inset-0 ${videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+            <Image 
+              src="/images/hero/hero-main.jpg" 
+              alt="2K Eğitim Arka Plan"
+              fill
+              sizes="100vw" 
+              priority
+              className="object-cover"
+            />
+          </div>
+
+          {/* Video Arka Plan (loading sonrası gösterilir) */}
           <video
             ref={videoRef}
             src="https://s3.tebi.io/dogahotelfethiye/hero.mp4"
-            className="object-cover w-full h-full"
+            className={`object-cover w-full h-full ${videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
             autoPlay
             muted
             loop
             playsInline
+            preload="auto"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60 sm:bg-gradient-to-r sm:from-black/40 sm:to-black/30"></div>
         </div>
