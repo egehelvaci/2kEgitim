@@ -499,10 +499,11 @@ const flip3D = keyframes`
   }
 `;
 
-// Sadece yazma animasyonu
-const justTyping = keyframes`
-  from { width: 0 }
-  to { width: 100% }
+// Yazı yazma, bekleme ve kaybolma animasyonu
+const typingWithDelay = keyframes`
+  0%, 5% { width: 0; opacity: 1; }
+  20%, 80% { width: 100%; opacity: 1; }
+  95%, 100% { width: 0; opacity: 0; }
 `;
 
 // Cursor yanıp sönme animasyonu
@@ -523,7 +524,7 @@ const flip3DClass = css`
   }
   
   .typing-text {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #333333;
     letter-spacing: 0.7px;
@@ -531,7 +532,7 @@ const flip3DClass = css`
     overflow: hidden;
     white-space: nowrap;
     border-right: none;
-    animation: ${justTyping} 3s steps(23, end) forwards;
+    animation: ${typingWithDelay} 15s ease-in-out infinite;
     text-shadow: 1px 1px 3px rgba(26, 26, 26, 0.4), 
                 0 0 2px rgba(255, 255, 255, 0.3),
                 2px 2px 4px rgba(26, 26, 26, 0.2);
@@ -539,8 +540,8 @@ const flip3DClass = css`
     font-style: normal;
     -webkit-text-stroke: 0.1px #333;
     padding-top: 3px;
-    padding-bottom: 5px;
-    line-height: 1.4;
+    padding-bottom: 4px;
+    line-height: 1.3;
   }
 `;
 
