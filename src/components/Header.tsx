@@ -130,7 +130,7 @@ const Header = () => {
         background: scrolled 
           ? 'linear-gradient(to right, white, #f5b421 50%, #f5b421)' 
           : 'rgba(255, 255, 255, 0.8)',
-        padding: scrolled ? '0.75rem 0' : '1.25rem 0',
+        padding: scrolled ? '0.3rem 0' : '1.25rem 0',
         boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
         backdropFilter: 'blur(8px)',
         borderBottom: scrolled ? '1px solid rgba(245, 180, 33, 0.2)' : 'none'
@@ -140,7 +140,13 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link href="/" className="flex items-center relative group">
-              <div className={`w-44 h-16 relative ${scrolled ? 'scale-95' : 'scale-100'} transition-all duration-300 pl-2 pr-6 flip-3d-effect`}>
+              <div 
+                className={`w-44 h-16 relative transition-all duration-300 pl-2 pr-6 flip-3d-effect`}
+                style={{
+                  transform: scrolled ? 'scale(0.4)' : 'scale(1)',
+                  transformOrigin: 'left center'
+                }}
+              >
                 <div className={`absolute inset-0 transition-opacity duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'} pulse-animation`}>
                   <Image 
                     src="/images/logo/logosaydam2kegitim.png" 
@@ -177,8 +183,12 @@ const Header = () => {
             </Link>
             
             {/* Slogan */}
-            <div className={`hidden md:block ml-8 overflow-hidden ${scrolled ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
-              <div className="typing-text">Sizden Biriymişcesine...</div>
+            <div className={`hidden md:block ml-6 overflow-hidden ${scrolled ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+              <div className="typing-text" style={{
+                fontSize: scrolled ? '0.9rem' : '1rem',
+                color: scrolled ? 'white' : 'rgb(31, 41, 55)',
+                fontStyle: 'italic'
+              }}>Sizden Biriymişcesine...</div>
             </div>
           </div>
 
@@ -191,8 +201,9 @@ const Header = () => {
               <button
                 ref={dropdownButtonRef}
                 onClick={toggleDropdown}
-                className="font-medium text-base transition-all duration-300 flex items-center"
+                className="font-medium transition-all duration-300 flex items-center"
                 style={{ 
+                  fontSize: scrolled ? '0.875rem' : '1rem',
                   color: scrolled ? 'white' : 'rgb(31, 41, 55)',
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.color = scrolled ? 'rgba(255, 255, 255, 0.9)' : '#f5b421'}
@@ -410,8 +421,9 @@ const NavLink = ({
   return (
     <Link 
       href={href} 
-      className="font-medium text-base transition-all duration-300 relative group"
+      className="font-medium transition-all duration-300 relative group"
       style={{ 
+        fontSize: scrolled ? '0.875rem' : '1rem',
         color: scrolled ? 'white' : 'rgb(31, 41, 55)'
       }}
       onMouseEnter={() => setIsHovered(true)}
