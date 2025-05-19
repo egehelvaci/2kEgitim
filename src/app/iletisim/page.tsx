@@ -112,7 +112,7 @@ export default function ContactPage() {
     {
       icon: <FaMapMarkerAlt className="w-5 h-5" />,
       title: "Adres",
-      content: "Kadıköy, İstanbul"
+      content: "Ataşehir, İstanbul"
     },
     {
       icon: <FaEnvelope className="w-5 h-5" />,
@@ -123,11 +123,6 @@ export default function ContactPage() {
       icon: <FaPhoneAlt className="w-5 h-5" />,
       title: "Telefon",
       content: <a href="tel:+905332630663" className="text-amber-600 hover:text-amber-700 transition-colors">0533 263 0663</a>
-    },
-    {
-      icon: <FaClock className="w-5 h-5" />,
-      title: "Çalışma Saatleri",
-      content: "Pazartesi - Cuma: 09:00 - 18:00"
     }
   ];
 
@@ -141,10 +136,10 @@ export default function ContactPage() {
           className="mb-14 text-center"
         >
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
-            Sizin İçin <span style={{color: "#f5b421"}}>Buradayız</span>
+            Beraber <span style={{color: "#f5b421"}}>Tasarlayalım</span>, Eğitim Değil <span style={{color: "#f5b421"}}>Çözüm</span> Olsun
           </h1>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Eğitim ihtiyacınızı birlikte konuşalım, kurumunuza özel çözümünüzü birlikte tasarlayalım.
+            Size doğru soruları sorabilmemiz için bizimle iletişime geçin. Çünkü ancak birlikte anlayarak, sahaya uygun çözümler üretebiliriz.
           </p>
         </motion.div>
         

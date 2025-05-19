@@ -32,11 +32,7 @@ const Footer = () => {
               2K Eğitim, işin mutfağında öğrenilmiş bilgiyle eğitim ve gelişim çözümleri üreten, teorik anlatımlar yerine sahada yaşanmış gerçek tecrübeler paylaşan bir eğitim danışmanlık firmasıdır.
             </p>
             <div className="flex space-x-3 sm:space-x-4">
-              <SocialLink href="https://facebook.com" icon={<FaFacebookF />} />
-              <SocialLink href="https://twitter.com" icon={<FaTwitter />} />
-              <SocialLink href="https://instagram.com" icon={<FaInstagram />} />
               <SocialLink href="https://linkedin.com" icon={<FaLinkedinIn />} />
-              <SocialLink href="https://youtube.com" icon={<FaYoutube />} />
             </div>
           </div>
           
@@ -62,7 +58,7 @@ const Footer = () => {
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start">
                 <FaMapMarkerAlt className="text-accent mt-1 mr-3 flex-shrink-0" />
-                <span className="text-gray-600 text-sm sm:text-base">İstanbul, Türkiye</span>
+                <span className="text-gray-600 text-sm sm:text-base">Ataşehir, İstanbul</span>
               </li>
               <li className="flex items-start">
                 <FaPhoneAlt className="text-accent mt-1 mr-3 flex-shrink-0" />

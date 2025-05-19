@@ -61,7 +61,7 @@ const solutionAreas = [
     description: "Temsilcilerin ses tonu, temsil dili ve ikna becerileri üzerine odaklanan eğitimlerde, gerçek çağrı kayıtları üzerinden çalışıldı. İletişimi sadece teknik değil, duygusal bir süreç olarak ele aldık."
   },
   {
-    title: "Kamu ve Kurumsal Dönüşüm",
+    title: "Kamu ve Örgütsel Gelişim",
     description: "Beyaz yaka ve mavi yaka çalışanlarla aynı sahada çalışılabilecek ortak bir eğitim dili kurduk. İç eğitmen havuzu kurulumu, kurum içi bilgi birikiminin eğitime dönüşmesi gibi yapısal katkılar sağladık."
   }
 ];
@@ -84,12 +84,12 @@ export default function ReferanslarimizPage() {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Bize <span style={{color: "#f5b421"}}>Güvenenler</span></h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6"><span style={{color: "#f5b421"}}>Birlikte</span> Düşünen, <span style={{color: "#f5b421"}}>Birlikte</span> Gelişen İş <span style={{color: "#f5b421"}}>Ortaklığı</span></h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-              Sadece eğitim vermiyoruz; birlikte tasarlıyor, birlikte uyguluyoruz.
+              Eğitim ve danışmanlık bizim için bir hizmet sunmak değil; kurumla birlikte düşünmek, birlikte gelişmek anlamına geliyor.
             </p>
             <p className="text-md text-gray-600 max-w-3xl mx-auto mb-10">
-              Her kurumun iç dinamiklerine özel çözümlerle, sahada gerçek dönüşüm yaratıyoruz.
+              Bugüne dek farklı sektörlerden birçok kurumla sahada karşılık bulan, ihtiyaçlarına özel çözümler geliştirdik.
             </p>
           </motion.div>
 
@@ -152,9 +152,9 @@ export default function ReferanslarimizPage() {
       <section className="py-16 bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Çözüm Ortağı Olduğumuz <span style={{color: "#f5b421"}}>Alanlar</span></h2>
+            <h2 className="text-3xl font-bold mb-4"><span style={{color: "#f5b421"}}>Birlikte</span> Düşünen, <span style={{color: "#f5b421"}}>Birlikte</span> Gelişen İş <span style={{color: "#f5b421"}}>Ortaklığı</span></h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Farklı sektörlerde edindiğimiz deneyimlerle, kurumların ihtiyaçlarına özel eğitim ve danışmanlık çözümleri sunuyoruz.
+              Eğitim ve danışmanlık bizim için bir hizmet sunmak değil; kurumla birlikte düşünmek, birlikte gelişmek anlamına geliyor. Bugüne dek farklı sektörlerden birçok kurumla sahada karşılık bulan, ihtiyaçlarına özel çözümler geliştirdik.
             </p>
           </div>
           
