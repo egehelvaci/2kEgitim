@@ -11,21 +11,62 @@
   --font-rubik: 'Rubik', sans-serif;
 }
 
+/* Tüm tarayıcılarda ve temalarda görünümün aynı olması için */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 255, 255, 255;
+    color-scheme: light !important;
+  }
+}
+
+/* Karanlık tema kurallarını geçersiz kıl */
+html[data-theme="dark"],
+html.dark,
+.dark {
+  --foreground-rgb: 0, 0, 0 !important;
+  --background-rgb: 255, 255, 255 !important;
+  color-scheme: light !important;
+}
+
+/* Forced Color Mode'da stil değiştirmemeyi sağla */
+@media (forced-colors: active) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 255, 255, 255;
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: var(--font-rubik);
+  color-scheme: light only;
+  forced-color-adjust: none;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  color: rgb(var(--foreground-rgb)) !important;
+  background: rgb(var(--background-rgb)) !important;
+}
+
+/* Karanlık tema kullanan tarayıcılar için */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: rgb(0, 0, 0) !important;
+    background: rgb(255, 255, 255) !important;
+  }
+  
+  a, p, h1, h2, h3, h4, h5, h6, span, div {
+    color: inherit;
+  }
 }
 
 @layer base {
   html {
     @apply text-base;
+    color-scheme: light only;
   }
   h1 {
     @apply text-3xl sm:text-4xl font-bold mb-4 sm:mb-6;

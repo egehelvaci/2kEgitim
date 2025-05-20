@@ -115,7 +115,7 @@ export default function ReferanslarimizPage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-4">Güven Duyulan <span style={{color: "#f5b421"}}>İş Ortağınız</span></h2>
+            <h2 className="text-3xl font-bold mb-4">Gelişimi Birlikte <span style={{color: "#f5b421"}}>Tasarladıklarımız</span></h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               2K Eğitim olarak, kurumlara özel çözümlerimiz ve deneyimli ekibimizle, 
               eğitim ve danışmanlık alanında güvenilir bir iş ortağıyız.
