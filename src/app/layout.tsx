@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   keywords: 'eğitim, danışmanlık, kurumsal eğitim, kişisel gelişim, finansal eğitim',
   icons: {
     icon: [
-      { url: '/favicon.ico' },
+      { url: '/icon.png' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
@@ -57,6 +57,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <meta name="forced-colors" content="none" />
         <meta name="google-site-verification" content="aO2WdNlk5JwqCSFoXegu9GmPD5rte16Om8nMG-hTHeg" />
+        <link rel="icon" href="/icon.png" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${rubik.className} bg-white text-black`}>
         <ThemeOverride />
