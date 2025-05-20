@@ -56,6 +56,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="forced-colors" content="none" />
+        <meta name="google-site-verification" content="aO2WdNlk5JwqCSFoXegu9GmPD5rte16Om8nMG-hTHeg" />
       </head>
       <body className={`${rubik.className} bg-white text-black`}>
         <ThemeOverride />
