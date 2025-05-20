@@ -128,12 +128,12 @@ const Header = () => {
       className="fixed w-full z-30 transition-all duration-500"
       style={{
         background: scrolled 
-          ? 'linear-gradient(to right, white, #f5b421 50%, #f5b421)' 
+          ? 'linear-gradient(to right, white 20%, #f7d785 35%, #f6c44e 50%, #f6b937 65%, #f5b421 90%, #f5b421 100%)' 
           : 'rgba(255, 255, 255, 0.8)',
         padding: scrolled ? '0.3rem 0' : '1.25rem 0',
         boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' : '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-        backdropFilter: 'blur(8px)',
-        borderBottom: scrolled ? '1px solid rgba(245, 180, 33, 0.2)' : 'none'
+        backdropFilter: scrolled ? 'none' : 'blur(8px)',
+        borderBottom: scrolled ? '1px solid #f5b421' : 'none'
       }}
     >
       <div className="container mx-auto px-6 lg:px-10">
@@ -182,12 +182,15 @@ const Header = () => {
               />
             </Link>
             
-            {/* Slogan */}
-            <div className={`hidden md:block ml-6 overflow-hidden ${scrolled ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+          {/* Slogan */}
+          <div className={`hidden md:block ml-44 overflow-hidden ${scrolled ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
               <div className="typing-text" style={{
-                fontSize: scrolled ? '0.9rem' : '1rem',
-                color: scrolled ? 'white' : 'rgb(31, 41, 55)',
-                fontStyle: 'italic'
+                fontSize: scrolled ? '0.95rem' : '1rem',
+                color: scrolled ? '#e09400' : 'rgb(31, 41, 55)',
+                fontStyle: 'italic',
+                fontWeight: '700',
+                textShadow: scrolled ? '0px 0px 3px rgba(255, 255, 255, 0.7), 0px 0px 1px rgba(0, 0, 0, 0.5)' : 'none',
+                letterSpacing: '0.5px'
               }}>Sizden Biriymişcesine...</div>
             </div>
           </div>
