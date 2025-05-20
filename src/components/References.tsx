@@ -103,7 +103,7 @@ const References = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold"
           >
-            Bize <span className="text-primary">Güvenen Kurumlar</span>
+            Gelişimi Birlikte <span className="text-primary">Tasarladıklarımız</span>
           </motion.h2>
         </div>
 
