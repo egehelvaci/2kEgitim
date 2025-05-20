@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane, FaBuilding, FaCheckCircle, FaRobot } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane, FaBuilding, FaCheckCircle, FaRobot, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -21,6 +23,7 @@ export default function ContactPage() {
   const [formErrors, setFormErrors] = useState<{
     kvkkApproval?: string;
   }>({});
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target as HTMLInputElement;
@@ -44,7 +47,7 @@ export default function ContactPage() {
     setFormFocus(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Formda hata kontrolü
@@ -64,20 +67,46 @@ export default function ContactPage() {
     
     setIsSubmitting(true);
     
-    // Burada gerçek bir API çağrısı yapılacaktır.
-    // Bu örnek için sadece başarılı olduğunu varsayıyoruz
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: '',
-        kvkkApproval: false,
+    try {
+      // API'ye istek gönder
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 1500);
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setSubmitSuccess(true);
+        setShowModal(true);
+        toast.success('Mesajınız başarıyla gönderildi!');
+        
+        // Formu sıfırla
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+          kvkkApproval: false,
+        });
+      } else {
+        toast.error('Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
+      }
+    } catch (error) {
+      console.error('Form gönderme hatası:', error);
+      toast.error('Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  // Modal'ı kapat
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   // Animasyon varyantları
@@ -99,6 +128,27 @@ export default function ContactPage() {
       transition: {
         type: "spring",
         stiffness: 100
+      }
+    }
+  };
+  
+  // Modal animasyonu
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 200
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.8,
+      transition: {
+        duration: 0.2
       }
     }
   };
@@ -128,6 +178,54 @@ export default function ContactPage() {
 
   return (
     <main className="bg-gradient-to-b from-white to-white py-16 px-4 pt-36 md:pt-40" style={{background: "linear-gradient(to bottom, white, rgba(245, 180, 33, 0.05))"}}>
+      {/* Toast bildirimleri için container */}
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      
+      {/* Başarı Modal'ı */}
+      <AnimatePresence>
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              className="bg-white rounded-xl shadow-2xl p-6 max-w-md w-full relative"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <button 
+                onClick={closeModal}
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                aria-label="Kapat"
+              >
+                <FaTimes className="w-6 h-6" />
+              </button>
+              
+              <div className="text-center">
+                <div className="w-20 h-20 bg-green-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                  <FaCheckCircle className="w-10 h-10 text-green-500" />
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-2 text-gray-800">Teşekkürler!</h3>
+                <p className="text-gray-600 mb-6">Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.</p>
+                
+                <div className="mt-4 p-4 bg-amber-50 rounded-lg">
+                  <p className="text-amber-800 text-sm">
+                    <strong>Bilgilendirme:</strong> Form bilgileriniz <span className="font-semibold">info@2kegitim.com</span> adresine iletilmiştir ve e-posta adresinize bir onay mesajı gönderilmiştir.
+                  </p>
+                </div>
+                
+                <button
+                  onClick={closeModal}
+                  className="mt-6 px-6 py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors"
+                >
+                  Tamam
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+      
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -211,7 +309,7 @@ export default function ContactPage() {
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800">Bize <span style={{color: "#f5b421"}}>Yazın</span></h3>
                 
-                {submitSuccess ? (
+                {submitSuccess && !showModal ? (
                   <div 
                     className="rounded-xl p-8 text-center"
                     style={{
