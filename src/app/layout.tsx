@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ThemeOverride from '@/components/ThemeOverride'
+import Script from 'next/script'
 
 const rubik = Rubik({ 
   subsets: ['latin'],
@@ -62,6 +63,40 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* JSON-LD yapılandırılmış veri - Google için Organization schema'sı */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: '2K Eğitim',
+              url: 'https://www.2kegitim.com',
+              logo: 'https://www.2kegitim.com/images/logo/logo2k.png',
+              sameAs: [
+                'https://www.instagram.com/2kegitim',
+                'https://www.linkedin.com/company/2kegitim'
+              ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+905332630663',
+                contactType: 'customer service',
+                email: 'info@2kegitim.com',
+                areaServed: 'TR',
+                availableLanguage: ['Turkish', 'English']
+              },
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'İstanbul',
+                addressRegion: 'Ataşehir',
+                addressCountry: 'TR'
+              },
+              description: 'Hayatın içinde, işin mutfağında öğrenilmiş bilgiyle eğitim ve gelişim çözümleri üretiyoruz.'
+            })
+          }}
+        />
       </head>
       <body className={`${rubik.className} bg-white text-black`}>
         <ThemeOverride />
