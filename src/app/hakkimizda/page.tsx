@@ -77,14 +77,14 @@ export default function HakkimizdaPage() {
               className="relative flex flex-col items-center"
             >
               <div className="relative mb-4 mx-auto">
-                <div className="relative w-60 h-60 md:w-80 md:h-80 rounded-full overflow-hidden mx-auto">
+                <div className="relative w-60 h-60 md:w-80 md:h-80 rounded-full overflow-hidden mx-auto" style={{ transform: 'translateX(12px)' }}>
                   <Image
-                    src="/images/hakkimizda/kurucumuz.png"
+                    src="/images/hakkimizda/kurucumuz.webp"
                     alt="Koray Karataş"
                     fill
                     style={{ 
                       objectFit: 'cover',
-                      objectPosition: '54% 50%'
+                      objectPosition: 'center top'
                     }}
                     className="shadow-lg"
                     priority
