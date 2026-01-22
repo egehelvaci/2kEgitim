@@ -107,7 +107,7 @@ const Hero = () => {
           {/* Video Arka Plan (loading sonrası gösterilir) */}
           <video
             ref={videoRef}
-            src="https://s3.tebi.io/dogahotelfethiye/hero.mp4"
+            src="https://2kegitim.b-cdn.net/hero.mp4"
             className={`object-cover w-full h-full ${videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
             autoPlay
             muted
