@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaArrowRight, FaHardHat, FaFireExtinguisher, FaToolbox, FaClipboardList, FaLightbulb, FaExclamationTriangle, FaHeartbeat, FaPhoneAlt, FaClipboardCheck, FaRegLightbulb, FaUserShield, FaMountain, FaShieldAlt } from 'react-icons/fa';
+import { FaEnvelope, FaArrowRight, FaHardHat, FaFireExtinguisher, FaToolbox, FaClipboardList, FaLightbulb, FaExclamationTriangle, FaHeartbeat, FaClipboardCheck, FaRegLightbulb, FaUserShield, FaMountain, FaShieldAlt } from 'react-icons/fa';
 
 const IsSagligiVeGuvenligiEgitimleriPage = () => {
   // Neden İSG eğitimi almalısınız verileri
@@ -206,7 +206,7 @@ const IsSagligiVeGuvenligiEgitimleriPage = () => {
               href="/iletisim" 
               className="bg-white text-amber-600 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition-colors inline-flex items-center"
             >
-              <FaPhoneAlt className="mr-2" /> İletişime Geçin
+              <FaEnvelope className="mr-2" /> İletişime Geçin
             </Link>
           </div>
         </div>

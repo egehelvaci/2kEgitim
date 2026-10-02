@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaArrowRight, FaMicrophone, FaUserFriends, FaComments, FaClipboardList, FaLightbulb, FaTheaterMasks, FaEdit, FaPhoneAlt, FaVideo, FaPodcast, FaSlideshare, FaRegCommentDots, FaChalkboardTeacher, FaRegLightbulb } from 'react-icons/fa';
+import { FaEnvelope, FaArrowRight, FaMicrophone, FaUserFriends, FaComments, FaClipboardList, FaLightbulb, FaTheaterMasks, FaEdit, FaVideo, FaPodcast, FaSlideshare, FaRegCommentDots, FaChalkboardTeacher, FaRegLightbulb } from 'react-icons/fa';
 
 const SunumVeSahneBecerileriPage = () => {
   // Neden sunum ve sahne becerileri eğitimi almalısınız verileri
@@ -171,7 +171,7 @@ const SunumVeSahneBecerileriPage = () => {
               href="/iletisim" 
               className="bg-white text-amber-600 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition-colors inline-flex items-center"
             >
-              <FaPhoneAlt className="mr-2" /> İletişime Geçin
+              <FaEnvelope className="mr-2" /> İletişime Geçin
             </Link>
           </div>
         </div>

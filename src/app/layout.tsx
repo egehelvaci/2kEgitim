@@ -81,7 +81,6 @@ export default function RootLayout({
               ],
               contactPoint: {
                 '@type': 'ContactPoint',
-                telephone: '+905332630663',
                 contactType: 'customer service',
                 email: 'info@2kegitim.com',
                 areaServed: 'TR',

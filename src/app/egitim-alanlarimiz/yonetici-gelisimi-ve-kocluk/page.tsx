@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaArrowRight, FaUserTie, FaChartLine, FaUsers, FaClipboardList, FaLightbulb, FaCompass, FaBullseye, FaPhoneAlt, FaClipboardCheck, FaRegLightbulb, FaEye, FaBriefcase, FaHandsHelping, FaRegComments } from 'react-icons/fa';
+import { FaEnvelope, FaArrowRight, FaUserTie, FaChartLine, FaUsers, FaClipboardList, FaLightbulb, FaCompass, FaBullseye, FaClipboardCheck, FaRegLightbulb, FaEye, FaBriefcase, FaHandsHelping, FaRegComments } from 'react-icons/fa';
 
 const YoneticiGelisimiKoclukPage = () => {
   // Neden yönetici gelişimi eğitimi almalısınız verileri
@@ -171,7 +171,7 @@ const YoneticiGelisimiKoclukPage = () => {
               href="/iletisim" 
               className="bg-white text-amber-600 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition-colors inline-flex items-center"
             >
-              <FaPhoneAlt className="mr-2" /> İletişime Geçin
+              <FaEnvelope className="mr-2" /> İletişime Geçin
             </Link>
           </div>
         </div>

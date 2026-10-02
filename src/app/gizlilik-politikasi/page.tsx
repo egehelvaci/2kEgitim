@@ -23,7 +23,7 @@ const GizlilikPolitikasi = () => {
           </p>
           <ul className="list-disc pl-6 mt-4 mb-6">
             <li className="mb-2">
-              <strong>Kişisel Bilgiler:</strong> Ad, soyad, e-posta adresi, telefon numarası, şirket adı, pozisyon gibi iletişim formları veya hizmet başvuruları aracılığıyla sağladığınız bilgiler.
+              <strong>Kişisel Bilgiler:</strong> Ad, soyad, e-posta adresi, şirket adı, pozisyon gibi iletişim formları veya hizmet başvuruları aracılığıyla sağladığınız bilgiler.
             </li>
             <li className="mb-2">
               <strong>Kullanım Bilgileri:</strong> IP adresi, tarayıcı türü, ziyaret ettiğiniz sayfalar, web sitemizde geçirdiğiniz süre, tıkladığınız bağlantılar ve web sitemizle etkileşim kurma şekliniz hakkında bilgiler.

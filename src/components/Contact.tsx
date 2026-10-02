@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaPaperPlane, FaRobot } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaEnvelope, FaClock, FaPaperPlane, FaRobot } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     company: '',
     message: '',
     kvkkApproval: false,
@@ -69,7 +68,6 @@ const Contact = () => {
       setFormData({
         name: '',
         email: '',
-        phone: '',
         company: '',
         message: '',
         kvkkApproval: false,
@@ -125,21 +123,11 @@ const Contact = () => {
                 
                 <div className="flex items-start">
                   <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-full bg-blue-50 text-primary">
-                    <FaPhoneAlt className="w-5 h-5" />
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-semibold">Telefon</h4>
-                    <p className="text-gray-600">+90 (533) 263 06 63</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-full bg-blue-50 text-primary">
                     <FaEnvelope className="w-5 h-5" />
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg font-semibold">E-posta</h4>
-                    <p className="text-gray-600">info@2kegitim.com</p>
+                    <a href="mailto:info@2kegitim.com" className="text-gray-600 hover:underline">info@2kegitim.com</a>
                   </div>
                 </div>
                 
@@ -196,7 +184,7 @@ const Contact = () => {
                     />
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6">
                     <div>
                       <label 
                         htmlFor="email" 
@@ -215,22 +203,6 @@ const Contact = () => {
                       />
                     </div>
                     
-                    <div>
-                      <label 
-                        htmlFor="phone" 
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Telefon Numaranız
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-primary outline-none transition-colors"
-                      />
-                    </div>
                   </div>
                   
                   <div>

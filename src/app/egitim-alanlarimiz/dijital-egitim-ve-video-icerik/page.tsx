@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaArrowRight, FaVideo, FaEdit, FaLaptop, FaClipboardList, FaLightbulb, FaMobileAlt, FaComments, FaPhoneAlt, FaFileVideo, FaPencilAlt, FaDesktop, FaChalkboardTeacher, FaRegLightbulb, FaProjectDiagram } from 'react-icons/fa';
+import { FaEnvelope, FaArrowRight, FaVideo, FaEdit, FaLaptop, FaClipboardList, FaLightbulb, FaMobileAlt, FaComments, FaFileVideo, FaPencilAlt, FaDesktop, FaChalkboardTeacher, FaRegLightbulb, FaProjectDiagram } from 'react-icons/fa';
 
 const DijitalEgitimVeVideoIcerikPage = () => {
   // Neden dijital eğitim almalısınız verileri
@@ -171,7 +171,7 @@ const DijitalEgitimVeVideoIcerikPage = () => {
               href="/iletisim" 
               className="bg-white text-amber-600 px-8 py-3 rounded-full font-medium hover:bg-amber-50 transition-colors inline-flex items-center"
             >
-              <FaPhoneAlt className="mr-2" /> İletişime Geçin
+              <FaEnvelope className="mr-2" /> İletişime Geçin
             </Link>
           </div>
         </div>

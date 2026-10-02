@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -61,12 +61,8 @@ const Footer = () => {
                 <span className="text-gray-600 text-sm sm:text-base">Ataşehir, İstanbul</span>
               </li>
               <li className="flex items-start">
-                <FaPhoneAlt className="text-accent mt-1 mr-3 flex-shrink-0" />
-                <span className="text-gray-600 text-sm sm:text-base">+90 (533) 263 06 63</span>
-              </li>
-              <li className="flex items-start">
                 <FaEnvelope className="text-accent mt-1 mr-3 flex-shrink-0" />
-                <span className="text-gray-600 text-sm sm:text-base">info@2kegitim.com</span>
+                <a href="mailto:info@2kegitim.com" className="text-gray-600 text-sm sm:text-base hover:underline">info@2kegitim.com</a>
               </li>
             </ul>
           </div>

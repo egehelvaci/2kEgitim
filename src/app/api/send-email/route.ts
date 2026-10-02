@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, company, message } = body;
+    const { name, email, company, message } = body;
 
     // E-posta göndermek için gerekli olan yapılandırma
     // NOT: Gmail kullanıyorsanız, "Daha az güvenli uygulama erişimi"ni açmanız gerekebilir
@@ -41,7 +41,6 @@ export async function POST(request: Request) {
             <h3 style="margin-top: 0; color: #444;">Mesajınızın Detayları:</h3>
             <p><strong>Ad Soyad:</strong> ${name}</p>
             <p><strong>E-posta:</strong> ${email}</p>
-            ${phone ? `<p><strong>Telefon:</strong> ${phone}</p>` : ''}
             ${company ? `<p><strong>Şirket:</strong> ${company}</p>` : ''}
             <p><strong>Mesaj:</strong> ${message}</p>
           </div>
@@ -69,7 +68,6 @@ export async function POST(request: Request) {
             <h3 style="margin-top: 0; color: #444;">Mesaj Detayları:</h3>
             <p><strong>Ad Soyad:</strong> ${name}</p>
             <p><strong>E-posta:</strong> ${email}</p>
-            ${phone ? `<p><strong>Telefon:</strong> ${phone}</p>` : ''}
             ${company ? `<p><strong>Şirket:</strong> ${company}</p>` : ''}
             <p><strong>Mesaj:</strong> ${message}</p>
           </div>

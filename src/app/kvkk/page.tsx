@@ -42,7 +42,7 @@ const KVKKPage = () => {
               <strong>Kimlik Bilgileri:</strong> Ad, soyad, T.C. kimlik numarası
             </li>
             <li className="mb-2">
-              <strong>İletişim Bilgileri:</strong> Telefon numarası, e-posta adresi, adres
+              <strong>İletişim Bilgileri:</strong> E-posta adresi, adres
             </li>
             <li className="mb-2">
               <strong>Müşteri İşlem Bilgileri:</strong> Eğitim bilgileri, talep bilgileri
@@ -76,7 +76,7 @@ const KVKKPage = () => {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">4. Kişisel Veri Toplamanın Yöntemi ve Hukuki Sebebi</h2>
           <p>
-            Kişisel verileriniz, her türlü sözlü, yazılı, elektronik ortamda; web sitemiz, e-posta, telefon, form doldurma ve diğer yollarla toplanmakta ve işlenmektedir. Bu veriler, KVKK'nın 5. ve 6. maddelerinde belirtilen aşağıdaki hukuki sebeplere dayanarak işlenmektedir:
+            Kişisel verileriniz, her türlü sözlü, yazılı, elektronik ortamda; web sitemiz, e-posta, form doldurma ve diğer yollarla toplanmakta ve işlenmektedir. Bu veriler, KVKK'nın 5. ve 6. maddelerinde belirtilen aşağıdaki hukuki sebeplere dayanarak işlenmektedir:
           </p>
           <ul className="list-disc pl-6 mt-4 mb-6">
             <li className="mb-2">Açık rızanızın bulunması</li>
